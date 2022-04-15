@@ -5,7 +5,7 @@ const Blog = () => {
 		<div className="blog-card flex flex-col rounded-lg p-4">
 			<img src="https://i.imgur.com/9eEal4H.png" alt="" className='w-full'/>
 			<div className="card-title flex items-center">
-				<span className='text-lg font-semibold px-2 py-1 mr-2 text-white bg-red-500 rounded-full'> <i className='fas fa-home'></i> </span>
+				<span className='text-lg font-semibold px-2 py-1 mr-2 text-white bg-red-500 rounded-full'> <i className='fad fa-blog'></i> </span>
 				<h2 className='text-lg font-semibold py-2'>Helthy meal plan</h2>
 			</div>
 			<div className="grid">

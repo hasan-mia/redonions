@@ -16,7 +16,7 @@ const Products = () => {
 					<Product></Product>
 					<Product></Product>
 				</div>
-				<button className='text-xl my-8 py-2 px-4 rounded-lg bg-gray-500 text-white'>Checkout Your Food</button>
+				<button className='text-xl my-8 py-2 px-4 rounded-lg bg-gray-500 text-white hover:bg-black'>Checkout Your Food</button>
 			</div>
 		</section>
 	);
