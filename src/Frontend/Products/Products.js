@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Product from '../Product/Product';
 import './Products.css'
 
@@ -16,7 +17,9 @@ const Products = () => {
 					<Product></Product>
 					<Product></Product>
 				</div>
-				<button className='text-xl my-8 py-2 px-4 rounded-lg bg-gray-500 text-white hover:bg-black'>Checkout Your Food</button>
+				<button className='text-xl my-8 py-2 px-4 rounded-lg bg-gray-500 text-white hover:bg-black'>
+					<Link to='/productdetails'>Checkout Your Food</Link>
+				</button>
 			</div>
 		</section>
 	);
