@@ -7,7 +7,7 @@ const Header = ({ fixed }) => {
     const [navbarOpen, setNavbarOpen] = useState(false);
 	return (
 		<header id="navbar" className="w-full">
-            <nav className="relative flex flex-wrap items-center justify-between p-3 lg:border-b-2 bg-white mb-1">
+            <nav className="relative flex flex-wrap items-center justify-between p-3 lg:border-b bg-white">
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <a
