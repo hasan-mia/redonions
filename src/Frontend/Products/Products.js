@@ -1,52 +1,22 @@
 import React from 'react';
+import Product from '../Product/Product';
 import './Products.css'
 
 const Products = () => {
 	return (
-		<section className='category'>
+		<section className='category text-center'>
 			<div className="container px-8">
-				<div className="grid grid-cols-4 gap-5 justify-items-center">
-					<div className="product-card flex flex-col items-center rounded-lg p-4">
-						<img src="https://i.imgur.com/wdWvEtb.png" alt="" className='w-2/4'/>
-						<h2 className='text-lg font-semibold py-2'>Helthy meal plan</h2>
-						<p className='text-sm text-justify py-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-						<p className='text-xl font-semibold'>$599</p>
-						<div className="flex justify-between w-full">
-							<button className='px-2 text-xl '>Cart</button>
-							<button className='px-2 text-xl '>Buy</button>
-						</div>
-					</div>
-					<div className="product-card flex flex-col items-center rounded-lg p-4">
-						<img src="https://i.imgur.com/wdWvEtb.png" alt="" className='w-2/4'/>
-						<h2 className='text-lg font-semibold py-2'>Helthy meal plan</h2>
-						<p className='text-sm text-justify py-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-						<p className='text-xl font-semibold'>$599</p>
-						<div className="flex justify-between w-full">
-							<button className='px-2 text-xl '>Cart</button>
-							<button className='px-2 text-xl '>Buy</button>
-						</div>
-					</div>
-					<div className="product-card flex flex-col items-center rounded-lg p-4">
-						<img src="https://i.imgur.com/wdWvEtb.png" alt="" className='w-2/4'/>
-						<h2 className='text-lg font-semibold py-2'>Helthy meal plan</h2>
-						<p className='text-sm text-justify py-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-						<p className='text-xl font-semibold'>$599</p>
-						<div className="flex justify-between w-full">
-							<button className='px-2 text-xl '>Cart</button>
-							<button className='px-2 text-xl '>Buy</button>
-						</div>
-					</div>
-					<div className="product-card flex flex-col items-center rounded-lg p-4">
-						<img src="https://i.imgur.com/wdWvEtb.png" alt="" className='w-2/4'/>
-						<h2 className='text-lg font-semibold py-2'>Helthy meal plan</h2>
-						<p className='text-sm text-justify py-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-						<p className='text-xl font-semibold'>$599</p>
-						<div className="flex justify-between w-full">
-							<button className='px-2 text-xl '>Cart</button>
-							<button className='px-2 text-xl '>Buy</button>
-						</div>
-					</div>
+				<div className="grid lg:grid-cols-4  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">
+					<Product></Product>
+					<Product></Product>
+					<Product></Product>
+					<Product></Product>
+					<Product></Product>
+					<Product></Product>
+					<Product></Product>
+					<Product></Product>
 				</div>
+				<button className='text-xl my-8 py-2 px-4 rounded-lg bg-gray-500 text-white'>Checkout Your Food</button>
 			</div>
 		</section>
 	);
