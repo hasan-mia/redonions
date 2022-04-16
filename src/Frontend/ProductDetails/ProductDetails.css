@@ -20,7 +20,7 @@
 .content > button {
     display: flex;
     background: hsl(348deg 95% 54%);
-    width: 20%;
+    width: 8rem;
     text-align: center;
     justify-content: center;
     color: #fff;

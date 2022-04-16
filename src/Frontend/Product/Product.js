@@ -1,15 +1,18 @@
 import React from 'react';
+import {useNavigate } from 'react-router-dom';
 import './Product.css'
-const Product = () => {
+const Product = ({breakfast}) => {
+	const {title, img, description, price, id} = breakfast
+	const productDetails = useNavigate()
 	return (
 		<div className="product-card flex flex-col items-center rounded-lg p-4">
-			<img src="https://i.imgur.com/wdWvEtb.png" alt="" className='w-2/4'/>
-			<h2 className='text-lg font-semibold py-2'>Helthy meal plan</h2>
-			<p className='text-sm text-justify py-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-			<p className='text-xl font-semibold'>$599</p>
+			<img src={img} alt="" className='w-2/4'/>
+			<h2 className='text-lg font-semibold py-2'>{title}</h2>
+			<p className='text-sm text-justify py-1'>{description.slice(0,60)} </p>
+			<p className='text-xl font-semibold'>${price}</p>
 			<div className="flex justify-between w-full">
 				<button className='btn-cart px-2 py-1 text-xl border-2 rounded-full font-semibold'> <i className="fas fa-cart-plus"></i> </button>
-				<button className='btn-buy px-2 py-1 text-xl border-2 rounded-3xl font-semibold'>Buy Now</button>
+				<button onClick={()=>productDetails(`/productdetails/${id}`)} className='btn-buy px-2 py-1 text-xl border-2 rounded-3xl font-semibold'>Buy Now</button>
 			</div>
 		</div>
 	);

@@ -1,15 +1,26 @@
-import React from 'react';
-import './ProductDetails.css'
+import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { productContext } from '../../App';
+// import useBreakFast from '../../Hooks/useBreakFast';
+import './ProductDetails.css';
+
 const ProductDetails = () => {
+	// Get Id From Navigate
+	const {id} = useParams();
+	// Get All Data
+	const [breakfasts] = useContext(productContext);
+	// Get Specific Item With ID
+ 	const breakfast = breakfasts.find(item => item.id === +id);
+
 	return (
 		<section className='flex justify-center'>
-			<div class="container px-16">
-				<div class="grid md:grid-cols-2 lg:grid-cols-2 grid-cols-1 gap-3 py-4 product-details">
-					<div class="content">
-						<h1 class="text-5xl text-black"> Light Breakfast</h1>
-						<p class="text-lg text-justify my-5"> Fish pie is usually made with fresh and smoked fish (for example cod, haddock, salmon, or halibut) or seafood in a white sauce[1] or cheddar cheese sauce made using the milk the fish was poached in. Hard-boiled eggs are a common additional ingredient.[citation needed] Parsley or chives are sometimes added to the sauce. It is oven-baked in a deep dish but is not usually made with the shortcrust or puff pastry casing that is associated with most savory pies (e.g. steak and kidney pie). </p>
+			<div className="container px-16">
+				<div className="grid md:grid-cols-2 lg:grid-cols-2 grid-cols-1 gap-3 py-4 product-details">
+					<div className="content">
+						<h1 className="text-5xl text-black"> {breakfast.title}</h1>
+						<p className="text-lg text-justify my-5"> {breakfast.description} </p>
 						<div className='flex text-4xl gap-12'>
-							<span className='font-semibold'>$55.9</span>
+							<span className='font-semibold'>${breakfast.price}</span>
 							<div className="count pb-2">
 								<button className='px-3 text-gray-500'>-</button>
 								<input type="submit" value='0' className='text-gray-600'/>
@@ -18,8 +29,8 @@ const ProductDetails = () => {
 						</div>
 						<button className='flex items-center'> <i className="far fa-cart-plus text-2xl"></i> <span className='px-2 items-baseline'>Add</span></button>
 					</div>
-					<div class="content-img">
-						<img src="https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg" alt="" className='b'/>
+					<div className="content-img">
+						<img src={breakfast.img} alt=""/>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,58 @@
+[
+	{
+		"title": "breakfirst1",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 1,
+		"img": "https://i.imgur.com/wdWvEtb.png",
+		"price": 21.6
+	},
+	{
+		"title": "breakfirst2",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 2,
+		"img": "https://i.imgur.com/oF1SqMG.png",
+		"price": 33.9
+	},
+	{
+		"title": "breakfirst3",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 3,
+		"img": "https://i.imgur.com/5mzI2fx.png",
+		"price": 71.6
+	},
+	{
+		"title": "breakfirst4",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 4,
+		"img": "https://i.imgur.com/tpzi6qt.png",
+		"price": 41.0
+	},
+	{
+		"title": "breakfirst5",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 5,
+		"img": "https://i.imgur.com/eOx97I8.png",
+		"price": 55.2
+	},
+	{
+		"title": "breakfirst6",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 6,
+		"img": "https://i.imgur.com/ZsMGwxq.png",
+		"price": 45.5
+	},
+	{
+		"title": "breakfirst7",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 7,
+		"img": "https://i.imgur.com/1enIzKH.png",
+		"price": 15.5
+	},
+	{
+		"title": "breakfirst8",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 8,
+		"img": "https://i.imgur.com/HZzCD5X.png",
+		"price": 35.5
+	}
+]
