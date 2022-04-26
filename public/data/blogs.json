@@ -1,0 +1,23 @@
+[
+	{
+		"title": "Fast Delivery",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 1,
+		"img": "https://i.imgur.com/9eEal4H.png",
+		"price": 21.6
+	},
+	{
+		"title": "A Good Auto Responder",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 2,
+		"img": "https://i.imgur.com/rNHrb7m.png",
+		"price": 33.9
+	},
+	{
+		"title": "Home Delivery",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
+		"id": 3,
+		"img": "https://i.imgur.com/rUFbJ0A.png",
+		"price": 71.6
+	}
+]
