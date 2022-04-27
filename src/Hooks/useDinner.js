@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useDinner = () => {
-	const [dinner, setDinners] = useState([])
+	const [dinners, setDinners] = useState([])
 	useEffect(() => {
 		fetch('data/dinner.json')
 			.then(res => res.json())
-			.then(data => setLaunch(data))
+			.then(data => setDinners(data))
 	}, []);
 
-	return [dinner, setDinners];
+	return [dinners, setDinners];
 };
 
 export default useDinner;

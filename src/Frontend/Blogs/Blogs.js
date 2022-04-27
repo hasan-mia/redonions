@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { productContext } from '../../App';
 import Blog from '../Blog/Blog';
 import './Blogs.css';
 
 const Blogs = () => {
+	const [breakfasts, lunches, dinners, blogs] = useContext(productContext);
 	return (
 		<section className='blogs text-center'>
 			<div className="container px-8">
 				<div className="grid lg:grid-cols-3  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">
-					<Blog></Blog>
-					<Blog></Blog>
-					<Blog></Blog>
+					{
+						blogs.map(blog=><Blog key={blog.id} blog={blog}></Blog>)
+					}
+					
 				</div>
 			</div>
 		</section>

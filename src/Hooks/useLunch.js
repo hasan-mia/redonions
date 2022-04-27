@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useLaunch = () => {
+const useLunch = () => {
 	const [lunches, setLaunches] = useState([])
 	useEffect(() => {
 		fetch('data/lunch.json')
 			.then(res => res.json())
-			.then(data => setLaunch(data))
+			.then(data => setLaunches(data))
 	}, []);
 
 	return [lunches, setLaunches];
 };
 
-export default useLaunch;
+export default useLunch;

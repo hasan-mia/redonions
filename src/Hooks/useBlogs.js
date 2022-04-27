@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import{ useEffect, useState } from 'react';
 
 const useBlogs = () => {
 	const [blogs, setBlogs] = useState([])
 	useEffect(() => {
 		fetch('data/blogs.json')
 			.then(res => res.json())
-			.then(data => setLaunch(data))
+			.then(data => setBlogs(data))
 	}, []);
 
-	return [dinner, setBlogs];
+	return [blogs, setBlogs];
 };
 
 export default useBlogs;
