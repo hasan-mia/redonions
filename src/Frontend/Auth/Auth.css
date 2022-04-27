@@ -1,0 +1,11 @@
+.signup-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}

@@ -9,16 +9,15 @@ import useBreakFast from './Hooks/useBreakFast';
 import useLunch from './Hooks/useLunch';
 import useDinner from './Hooks/useDinner';
 import useBlogs from './Hooks/useBlogs';
-import Signup from './Frontend/Users/Signup';
-import Signin from './Frontend/Users/Signin';
-import Users from './Frontend/Users/Users';
+import Signup from './Frontend/Auth/Signup';
+import Signin from './Frontend/Auth/Signin';
+// import Users from './Frontend/Auth/Users';
 import BreakfastDetails from './Frontend/ProductDetails/BreakfastDetails';
 import DinnerDetails from './Frontend/ProductDetails/DinnerDetails';
 import LunchDetails from './Frontend/ProductDetails/LunchDetails';
 import Breakfasts from './Frontend/Products/Breakfasts';
 import Dinners from './Frontend/Products/Dinners';
 import Lunches from './Frontend/Products/Lunches';
-import ProductDetails from './Frontend/ProductDetails/ProductDetails';
 import BlogDetails from './Frontend/BlogDetails/BlogDetails';
 
 export const productContext = createContext()
@@ -44,7 +43,7 @@ function App() {
         <Route path='/lunches' element={<Lunches/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
         <Route path='/signin' element={<Signin/>}></Route>
-        <Route path='/user' element={<Users/>}></Route>
+        {/* <Route path='/user' element={<Users/>}></Route> */}
       </Routes>
       <Footer></Footer>
     </productContext.Provider>

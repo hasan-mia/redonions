@@ -66,13 +66,13 @@ const Header = ({ fixed }) => {
                         </li>
                         <li className="nav-item">
                             < Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
-                            to="/user">
+                            to="/signin">
 								Login
                             </Link>
                         </li>
                         <li className="nav-item">
                             < Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
-                            to="/user">
+                            to="/signup">
 								Sign up
                             </Link>
                         </li>
