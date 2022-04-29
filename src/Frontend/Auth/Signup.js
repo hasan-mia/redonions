@@ -1,9 +1,12 @@
 import React from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import logo from '../../Assets/logo.png';
+import { auth } from '../../Firebase/Firebase.init';
 import './Auth.css';
 
 const Signup = () => {
+	const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
 	return (
 		<section className='grid justify-center'>
 			<div className="container px-16 py-1">

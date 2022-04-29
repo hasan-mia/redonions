@@ -2,6 +2,9 @@ import React from 'react';
 import logo from '../../Assets/logo.png';
 import { Link } from 'react-router-dom';
 import './Auth.css';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { auth } from '../../Firebase/Firebase.init';
+import SocialLogin from './SocialLogin';
 
 const Signin = () => {
 	return (
@@ -20,10 +23,7 @@ const Signin = () => {
 					<Link to='/signup' className='text-center text-red-600'>Need an account?</Link>
 				</div>
 
-				<div className="flex justify-center gap-4 py-2">
-					<button> <i className='fab fa-facebook text-3xl p-1 hover:text-blue-600 hover:bg-blue-200 bg-blue-600 text-white rounded-md'></i> </button>
-					<button> <i className='fab fa-google text-3xl p-1 hover:text-red-500 hover:bg-red-300 bg-red-500 text-white rounded-md'></i> </button>
-				</div>
+				<SocialLogin></SocialLogin>
 			</div>
 		</section>
 	);

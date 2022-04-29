@@ -1,6 +1,7 @@
 import footlogo from '../../Assets/logo-footer.png'
 import React from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	return (
@@ -38,8 +39,8 @@ const Footer = () => {
 				</div>
 				<div className="link">
 					<nav className='flex gap-3'>
-						<li>Privacy Policy</li>
-						<li>Terms of use</li>
+						<li><Link to='/privacy'>Privacy Policy</Link></li>
+						<li><Link to='/terms'>Terms of use</Link></li>
 						<li>Price</li>
 					</nav>
 				</div>

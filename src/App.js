@@ -19,6 +19,8 @@ import Breakfasts from './Frontend/Products/Breakfasts';
 import Dinners from './Frontend/Products/Dinners';
 import Lunches from './Frontend/Products/Lunches';
 import BlogDetails from './Frontend/BlogDetails/BlogDetails';
+import Privacy from './Frontend/Pages/Privacy-Terms/Privacy';
+import Terms from './Frontend/Pages/Privacy-Terms/Terms';
 
 export const productContext = createContext()
 
@@ -44,6 +46,8 @@ function App() {
         <Route path='/signup' element={<Signup/>}></Route>
         <Route path='/signin' element={<Signin/>}></Route>
         {/* <Route path='/user' element={<Users/>}></Route> */}
+        <Route path='/privacy' element={<Privacy/>}></Route>
+        <Route path='/terms' element={<Terms/>}></Route>
       </Routes>
       <Footer></Footer>
     </productContext.Provider>

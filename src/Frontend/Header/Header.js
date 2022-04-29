@@ -2,9 +2,18 @@ import logo from '../../Assets/logo.png';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../Firebase/Firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = ({ fixed }) => {
+    const {user}=useAuthState(auth)
     const [navbarOpen, setNavbarOpen] = useState(false);
+    if (user) {
+        console.log(user);
+    }else{
+        console.log('no user');
+    }
 	return (
 		<header id="navbar" className="w-full md:mb-0 mb-8">
             <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
@@ -25,35 +34,6 @@ const Header = ({ fixed }) => {
                         </button>
                     </div>
                 <div className={"lg:flex flex-grow items-center" +(navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
-                    {/* Main Left Item */}
-                    {/* <ul className="flex flex-col lg:flex-row list-none lg:ms-auto">
-                        <li className="nav-item">
-                            <Link className="px-2 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                            to="/">
-                            <i className="fas fa-home text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Home</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="px-2 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                            to="/category">
-                            <i className="fab fa-empire text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Category</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="px-2 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                            to="/order">
-                            <i className="fab fa-firstdraft text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Order</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="px-2 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                            to="/products">
-                            <i className="fab fa-firstdraft text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Products</span>
-                            </Link>
-                        </li>
-                    </ul> */}
-
-                
 
                     {/* Main Right Item */}
                     <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
@@ -64,24 +44,16 @@ const Header = ({ fixed }) => {
                             <span className="top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none transform -translate-y-1/2 border-2 rounded-full">99</span>
                             </Link>
                         </li>
-                        <li className="nav-item">
+
+                        {
+                            !user? 
                             < Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
-                            to="/signin">
-								Login
-                            </Link>
-                        </li>
-                        <li className="nav-item">
+                            to="/signin">Signin</Link>
+                            :
                             < Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
-                            to="/signup">
-								Sign up
-                            </Link>
-                        </li>
-                        {/* <li className="nav-item">
-                            <Link className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
-                            to="/user">
-                            <i className="fas fa-user text-2xl leading-lg opacity-75"></i><span className="ml-2"></span>
-                            </Link>
-                        </li> */}
+                            onClick={() => signOut(auth)}>Sign out</Link>
+                        }
+                        
                        
                     </ul>
                 </div>
