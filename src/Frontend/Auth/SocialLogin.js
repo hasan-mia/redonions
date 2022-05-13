@@ -1,17 +1,37 @@
-import React from 'react';
-import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useEffect } from 'react';
+import { useAuthState, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { auth } from '../../Firebase/Firebase.init';
+import auth from '../../Firebase/Firebase.init';
 
 const SocialLogin = () => {
-	const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-	const [signInWithFacebook, fbUser, fbLoading, fbError] = useSignInWithFacebook(auth);
+	const [signInWithGoogle, googleUser, googleloading, googleError] = useSignInWithGoogle(auth);
+	const [signInWithFacebook, facbookuser, facebookloading, facebookerror] = useSignInWithFacebook(auth);
+	const [user, loading, error] = useAuthState(auth);
+
 	const navigate = useNavigate();
 	const location = useLocation();
-	let from = location.state?.from?.pathname || "/";
-	 if (googleUser || fbUser) {
-        navigate(from, { replace: true });
-    }
+	const from = location.state?.from?.pathname || "/";
+
+	useEffect(() => {
+		if (user) {
+			// ========Create Token======
+            const url = 'https://boiling-basin-90703.herokuapp.com/login';
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: user.email
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                localStorage.setItem("accessToken", data.token);
+                navigate(from, { replace: true });
+            });
+		}
+	}, [user]);
 	return (
 		<div className="flex justify-center gap-4 py-2">
 			<button onClick={()=>signInWithFacebook()}> <i className='fab fa-facebook text-3xl p-1 hover:text-blue-600 hover:bg-blue-200 bg-blue-600 text-white rounded-md'></i> </button>

@@ -3,17 +3,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../Firebase/Firebase.init';
+import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
 
 const Header = ({ fixed }) => {
-    const {user}=useAuthState(auth)
+    const [user]=useAuthState(auth)
     const [navbarOpen, setNavbarOpen] = useState(false);
-    if (user) {
-        console.log(user);
-    }else{
-        console.log('no user');
-    }
+
 	return (
 		<header id="navbar" className="w-full md:mb-0 mb-8">
             <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
@@ -47,11 +43,11 @@ const Header = ({ fixed }) => {
 
                         {
                             !user? 
-                            < Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
+                            <Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
                             to="/signin">Signin</Link>
                             :
-                            < Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
-                            onClick={() => signOut(auth)}>Sign out</Link>
+                            <button className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
+                            onClick={() => signOut(auth)}>Sign out</button>
                         }
                         
                        

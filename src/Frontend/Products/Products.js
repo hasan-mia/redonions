@@ -1,38 +1,34 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { productContext } from '../../App';
-import useBreakFast from '../../Hooks/useBreakFast';
-import useDinner from '../../Hooks/useDinner';
-import useLunch from '../../Hooks/useLunch';
-import Breakfast from '../Product/Breakfast';
-import Dinner from '../Product/Dinner';
-import Lunch from '../Product/Lunch';
+import { Tab } from '@headlessui/react'
 import './Products.css'
+import Breakfasts from './Breakfasts';
+import Lunches from './Lunches';
+import Dinners from './Dinners';
 
 const Products = () => {
-	const [breakfasts] = useBreakFast();
-	const [lunches] = useLunch();
-	const [dinners] = useDinner();
 	return (
 		<section className='category text-center'>
 			<div className="container px-8">
-				<div className="grid lg:grid-cols-4  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">
-					
-					{
-						breakfasts.map(breakfast => <Breakfast key={breakfast.id} breakfast={breakfast}></Breakfast>)
-					}
-					
-					{
-						lunches.map(lunch => <Lunch key={lunch.id} lunch={lunch}></Lunch>)
-					} 
-					
-					{
-						dinners.map(dinner => <Dinner key={dinner.id} dinner={dinner}></Dinner>)
-					}
+					 <Tab.Group>
+						<Tab.List className='flex justify-center py-8'>
+							<Tab className="px-2 py-2 flex items-center hover:border-b-2 border-red-600 hover:text-red-600 text-xl capitalize font-semibold">BreakFast</Tab>
+							<Tab className="px-2 py-2 flex items-center hover:border-b-2 border-red-600 hover:text-red-600 text-xl capitalize font-semibold">Lunch</Tab>
+							<Tab className="px-2 py-2 flex items-center hover:border-b-2 border-red-600 hover:text-red-600 text-xl capitalize font-semibold">Dinner</Tab>
+						</Tab.List>
+						<Tab.Panels>
+							<Tab.Panel>
+								<Breakfasts/>
+							</Tab.Panel>
+							<Tab.Panel>
+								<Lunches/>
+							</Tab.Panel>
+							<Tab.Panel>
+								<Dinners/>
+							</Tab.Panel>
+						</Tab.Panels>
+						</Tab.Group>
 					
 				</div>
-				
-			</div>
 		</section>
 	);
 };

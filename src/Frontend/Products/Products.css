@@ -2,3 +2,6 @@
     display: flex;
     justify-content: center;
 }
+#headlessui-tabs-tab-:focus-visible {
+    border: 1px solid #e30f0f;
+}
