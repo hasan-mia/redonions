@@ -2,8 +2,6 @@ import React from 'react';
 import logo from '../../Assets/logo.png';
 import { Link } from 'react-router-dom';
 import './Auth.css';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { auth } from '../../Firebase/Firebase.init';
 import SocialLogin from './SocialLogin';
 
 const Signin = () => {

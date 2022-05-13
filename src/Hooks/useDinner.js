@@ -8,7 +8,7 @@ const useDinner = () => {
 			.then(data => setDinners(data))
 	}, []);
 
-	return [dinners, setDinners];
+	return {dinners, setDinners};
 };
 
 export default useDinner;

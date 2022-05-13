@@ -15,12 +15,10 @@ const Header = ({ fixed }) => {
             <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
                 <div className="container px-8 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                        <a
-                        className="text-sm flex font-bold leading-relaxed items-center mr-4 py-2 whitespace-nowrap"
-                        href="/"
-                        >
+                        <Link className="text-sm flex font-bold leading-relaxed items-center mr-4 py-2 whitespace-nowrap"
+                        to="/">
                         <img src={logo} alt="" className='logo w-1/4'/>
-                        </a>
+                        </Link>
                         <button
                         className="cursor-pointer text-xl leading-none px-3 py-1 border-2 bg-transparent block lg:hidden outline-none focus:outline-none"
                         type="button"

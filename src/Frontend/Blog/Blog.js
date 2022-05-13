@@ -13,7 +13,7 @@ const Blog = ({blog}) => {
 			</div>
 			<div className="grid">
 				<p className='text-sm text-justify py-1'>{description}</p>
-				<a onClick={()=>blogDetails(`/blog/${id}`)} className='text-lg text-left font-semibold text-blue-600 cursor-pointer'>see more<i className='fas fa-arrow-right bg-green-400 rounded-full py-1 px-2 ml-2 text-sm text-white'></i> </a>
+				<button onClick={()=>blogDetails(`/blog/${id}`)} className='text-lg text-left font-semibold text-blue-600 cursor-pointer'>see more<i className='fas fa-arrow-right bg-green-400 rounded-full py-1 px-2 ml-2 text-sm text-white'></i> </button>
 			</div>
 		</div>
 	);

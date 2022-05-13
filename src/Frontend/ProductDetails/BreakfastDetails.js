@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import { productContext } from '../../App';
 import './ProductDetails.css';
 const BreakfastDetails = () => {
 	// Get Id From Navigate
 	const {id} = useParams();
 	// Get All Data
-	const [breakfasts, lunches, dinners, blogs] = useContext(productContext);
+	const {breakfasts} = useContext(productContext);
 	// Get Specific Item With ID
  	const breakfast = breakfasts.find(item => item.id === +id);
 	const {title, description,price,img} = breakfast;

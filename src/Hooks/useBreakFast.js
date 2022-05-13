@@ -8,7 +8,7 @@ const useBreakFast = () => {
 		.then(data => setBreakfasts(data))
 	}, []);
 	
-	return [breakfasts, setBreakfasts];
+	return {breakfasts, setBreakfasts};
 };
 
 export default useBreakFast;

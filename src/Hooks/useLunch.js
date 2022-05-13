@@ -8,7 +8,7 @@ const useLunch = () => {
 			.then(data => setLaunches(data))
 	}, []);
 
-	return [lunches, setLaunches];
+	return {lunches, setLaunches};
 };
 
 export default useLunch;

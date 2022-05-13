@@ -21,33 +21,41 @@ import Lunches from './Frontend/Products/Lunches';
 import BlogDetails from './Frontend/BlogDetails/BlogDetails';
 import Privacy from './Frontend/Pages/Privacy-Terms/Privacy';
 import Terms from './Frontend/Pages/Privacy-Terms/Terms';
+import Notfound from './Frontend/NotFound/Notfound';
+import Backend from './Backend/Pages/Bakend';
 
 export const productContext = createContext()
 
 function App() {
-  const [breakfasts] = useBreakFast();
-  const [lunches] = useLunch();
-  const [dinners] = useDinner();
-  const [blogs] = useBlogs();
+  const {breakfasts} = useBreakFast();
+  const {lunches} = useLunch();
+  const {dinners} = useDinner();
+  const {blogs} = useBlogs();
  
   return (
-    <productContext.Provider value={[breakfasts, lunches, dinners, blogs]}>      
+    <productContext.Provider value={{breakfasts, lunches, dinners, blogs}}>      
       <Header></Header>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/blog/:id' element={<BlogDetails/>}></Route>
-        {/* <Route path='/breakfasts' element={<Breakfasts/>}></Route> */}
-        <Route path='/breakfasts' element={<Breakfasts/>}></Route>
-        <Route path='/breakfast/:id' element={<BreakfastDetails/>}></Route>
-        <Route path='/dinners' element={<Dinners/>}></Route>
-        <Route path='/dinners/:id' element={<DinnerDetails/>}></Route>
-        <Route path='/lunches/:id' element={<LunchDetails/>}></Route>
-        <Route path='/lunches' element={<Lunches/>}></Route>
-        <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/signin' element={<Signin/>}></Route>
-        {/* <Route path='/user' element={<Users/>}></Route> */}
-        <Route path='/privacy' element={<Privacy/>}></Route>
-        <Route path='/terms' element={<Terms/>}></Route>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/blog/:id' element={<BlogDetails/>}/>
+        {/* <Route path='/breakfasts' element={<Breakfasts/>}/> */}
+        <Route path='/breakfasts' element={<Breakfasts/>}/>
+        <Route path='/breakfast/:id' element={<BreakfastDetails/>}/>
+        <Route path='/dinners' element={<Dinners/>}/>
+        <Route path='/dinners/:id' element={<DinnerDetails/>}/>
+        <Route path='/lunches/:id' element={<LunchDetails/>}/>
+        <Route path='/lunches' element={<Lunches/>}/>
+        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/signin' element={<Signin/>}/>
+        {/* <Route path='/user' element={<Users/>}/> */}
+        <Route path='/privacy' element={<Privacy/>}/>
+        <Route path='/terms' element={<Terms/>}/>
+        <Route to="*" element={<Notfound/>}/>
+      </Routes>
+
+      {/* ===============Backend Route============= */}
+      <Routes>
+        <Route to="/backend" element={<Backend/>}/>
       </Routes>
       <Footer></Footer>
     </productContext.Provider>

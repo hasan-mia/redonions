@@ -4,7 +4,7 @@ import Blog from '../Blog/Blog';
 import './Blogs.css';
 
 const Blogs = () => {
-	const [breakfasts, lunches, dinners, blogs] = useContext(productContext);
+	const {blogs} = useContext(productContext);
 	return (
 		<section className='blogs text-center'>
 			<div className="container px-8">

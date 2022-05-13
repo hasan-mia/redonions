@@ -6,8 +6,7 @@ const LunchDetails = () => {
 	// Get Id From Navigate
 	const {id} = useParams();
 	// Get All Data
-	const [breakfasts, lunches, dinners, blogs] = useContext(productContext);
-	// const [lunches] = useLunch();
+	const {lunches} = useContext(productContext);
 	// Get Specific Item With ID
  	const lunch = lunches.find(item => item.id === +id);
 	const {title, description, price, img} = lunch;

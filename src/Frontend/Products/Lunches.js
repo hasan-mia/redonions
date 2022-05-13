@@ -4,8 +4,7 @@ import Lunch from '../Product/Lunch';
 import './Products.css'
 
 const Lunches = () => {
-	const [lunches] = useLunch();
-	// console.log(lunches);
+	const {lunches} = useLunch();
 	return (
 		<section className='category text-center'>
 			<div className="container px-8">

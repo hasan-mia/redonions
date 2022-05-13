@@ -6,10 +6,10 @@ const BlogDetails = () => {
 	// Get Id From Navigate
 	const {id} = useParams();
 	// Get All Data
-	const [breakfasts, lunches, dinners, blogs] = useContext(productContext);
+	const {blogs}= useContext(productContext);
 	// Get Specific Item With ID
 	const blog = blogs.find(item => item.id === +id)
-	const {title, description,price,img} = blog;
+	const {title, description,img} = blog;
 	return (
 		<section className='flex justify-center'>
 			<div className="container px-16 py-2">
