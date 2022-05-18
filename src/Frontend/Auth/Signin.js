@@ -7,12 +7,12 @@ import { useForm } from 'react-hook-form';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
 
 const Signin = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
 	const [ signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
 	
-	let signInError;
 	const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -20,20 +20,37 @@ const Signin = () => {
 	useEffect( () =>{
         if (user) {
             navigate(from, { replace: true });
+            toast.success("Welcome", user?.displayName);
         }
-    }, [user])
+    }, [user, from, navigate])
+
+	 useEffect(() => {
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                    toast.error("Please provide a valid email");
+                    break;
+                case "auth/invalid-password":
+                    toast.error("Invalid password!!");
+                    break;
+                case "auth/wrong-password":
+                    toast.error("Password is Wrong!!");
+                    break;
+                case "auth/user-not-found":
+                    toast.error("User Not Found!!");
+                    break;
+                default:
+                    toast.error("Something went wrong");
+            }
+        }
+    }, [error]);
 
 	if (loading) {
-        return <p className='text-center text-3xl'>Loading...</p>
-    }
-
-    if(error){
-        signInError= <p className='text-red-500'><small>{error?.message}</small></p>
+        return <Loading></Loading>
     }
 
     const handleLogin = data => {
         signInWithEmailAndPassword(data.email, data.password);
-		toast.success("Welcome", user?.displayName);
     }
 
 	return (
@@ -75,7 +92,7 @@ const Signin = () => {
 						{errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
 
-						<button type="submit" className='p-2 mb-1 border-2 lg:w-2/5 w-full bg-red-500 text-white'>Sign in</button>
+						<input type="submit" className='p-2 mb-1 border-2 lg:w-2/5 w-full bg-red-500 text-white' value="Sign in"/>
 					</form>
 					<Link to='/signup' className='text-center text-red-600'>Need an account?</Link>
 				</div>

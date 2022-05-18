@@ -2,6 +2,8 @@
 import { createContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Frontend/Footer/Footer';
 import Header from './Frontend/Header/Header';
 import Home from './Frontend/Pages/Home/Home';
@@ -58,6 +60,7 @@ function App() {
         <Route to="/backend" element={<Backend/>}/>
       </Routes>
       <Footer></Footer>
+      <ToastContainer/>
     </productContext.Provider>
   );
 }

@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import logo from '../../Assets/logo.png';
 import auth from '../../Firebase/Firebase.init';
+import Loading from '../Loading/Loading';
 import './Auth.css';
 
 const Signup = () => {
@@ -12,7 +13,6 @@ const Signup = () => {
 	const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    let signUpError;
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -20,14 +20,31 @@ const Signup = () => {
         if (user) {
             navigate(from, { replace: true });
         }
-    }, [user])
+    }, [user, from, navigate])
+
+    useEffect(() => {
+        if (error || updateError) {
+            switch (error?.code || updateError?.code) {
+                case "auth/invalid-email":
+                    toast.error("Please provide a valid email");
+                    break;
+                case "auth/invalid-password":
+                    toast.error("Invalid password!!");
+                    break;
+                case "auth/wrong-password":
+                    toast.error("Password is Wrong!!");
+                    break;
+                case "auth/user-not-found":
+                    toast.error("User Not Found!!");
+                    break;
+                default:
+                    toast.error("Something went wrong");
+            }
+        }
+    }, [error, updateError]);
 
     if (loading || updating) {
-        return <p className='text-center text-3xl'>Loading...</p>
-    }
-
-    if (error || updateError) {
-        signUpError = <p className='text-red-500'><small>{error?.message || updateError?.message}</small></p>
+        return <Loading></Loading>
     }
 
 	const handleRegister = async data => {
