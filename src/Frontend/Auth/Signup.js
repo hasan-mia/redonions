@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
 import logo from '../../Assets/logo.png';
 import auth from '../../Firebase/Firebase.init';
 import './Auth.css';
 
 const Signup = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
-	const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
+	const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    let signUpError;
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    useEffect( () =>{
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    }, [user])
+
+    if (loading || updating) {
+        return <p className='text-center text-3xl'>Loading...</p>
+    }
+
+    if (error || updateError) {
+        signUpError = <p className='text-red-500'><small>{error?.message || updateError?.message}</small></p>
+    }
 
 	const handleRegister = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        console.log(user);
-        navigate('/');
+        toast.success("Email vaification link sent");
     }
 	return (
 		<section className='grid justify-center'>
@@ -38,9 +55,7 @@ const Signup = () => {
                                 }
                             })}
                         />
-						<label className="label">
-                            {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-                        </label>
+						{errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
 						<input
                             type="email"
                             placeholder="Your Email"

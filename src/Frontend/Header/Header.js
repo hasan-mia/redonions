@@ -9,7 +9,7 @@ import { signOut } from 'firebase/auth';
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
     const [navbarOpen, setNavbarOpen] = useState(false);
-
+    console.log(user);
 	return (
 		<header id="navbar" className="w-full md:mb-0 mb-8">
             <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
