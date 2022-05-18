@@ -13,7 +13,7 @@ import useDinner from './Hooks/useDinner';
 import useBlogs from './Hooks/useBlogs';
 import Signup from './Frontend/Auth/Signup';
 import Signin from './Frontend/Auth/Signin';
-// import Users from './Frontend/Auth/Users';
+import RequireAuth from './Frontend/Auth/RequireAuth'
 import BreakfastDetails from './Frontend/ProductDetails/BreakfastDetails';
 import DinnerDetails from './Frontend/ProductDetails/DinnerDetails';
 import LunchDetails from './Frontend/ProductDetails/LunchDetails';
@@ -40,7 +40,6 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/blog/:id' element={<BlogDetails/>}/>
-        {/* <Route path='/breakfasts' element={<Breakfasts/>}/> */}
         <Route path='/breakfasts' element={<Breakfasts/>}/>
         <Route path='/breakfast/:id' element={<BreakfastDetails/>}/>
         <Route path='/dinners' element={<Dinners/>}/>
@@ -52,12 +51,20 @@ function App() {
         {/* <Route path='/user' element={<Users/>}/> */}
         <Route path='/privacy' element={<Privacy/>}/>
         <Route path='/terms' element={<Terms/>}/>
-        <Route to="*" element={<Notfound/>}/>
-      </Routes>
+  
+        {/* ===============Backend Route============= */}
+         <Route path="/dashboard" element={<RequireAuth><Backend /></RequireAuth>} >
+          <Route index element={<Backend/>}></Route>
+          {/* <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="history" element={<MyHistory></MyHistory>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
+          <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route path="addDoctor" element={<RequireAdmin><AddDoctor></AddDoctor></RequireAdmin>}></Route>
+          <Route path="manageDoctor" element={<RequireAdmin><ManageDoctors></ManageDoctors></RequireAdmin>}></Route> */}
+        </Route>
 
-      {/* ===============Backend Route============= */}
-      <Routes>
-        <Route to="/backend" element={<Backend/>}/>
+        {/* ==== Not Found === */}
+        <Route to="*" element={<Notfound/>}/>
       </Routes>
       <Footer></Footer>
       <ToastContainer/>

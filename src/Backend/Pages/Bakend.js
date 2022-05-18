@@ -1,12 +1,11 @@
 import React from 'react';
-import Test from '../../Frontend/Test';
 import Sidebar from './../Sidebar/Sidebar';
 
 const Bakend = () => {
 	return (
-		<>
-			<Test></Test>
-		</>
+		<main className='h-screen'>
+			<Sidebar></Sidebar>
+		</main>
 	);
 };
 

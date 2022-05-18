@@ -1,14 +1,15 @@
 import React from 'react';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
-import auth from '../../../Firebase/Firebase.init';
+import auth from '../../Firebase/Firebase.init';
+import Loading from '../Loading/Loading';
 
 const RequireAuth = ({children}) => {
     const [user, loading] = useAuthState(auth);
     const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
     const location = useLocation();
     if(loading){
-        return <p className='text-center text-3xl'>Loading...</p>
+        return <Loading></Loading>
     }
     
     if(user){
