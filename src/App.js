@@ -25,6 +25,17 @@ import Privacy from './Frontend/Pages/Privacy-Terms/Privacy';
 import Terms from './Frontend/Pages/Privacy-Terms/Terms';
 import Notfound from './Frontend/NotFound/Notfound';
 import Backend from './Backend/Pages/Backend';
+import Users from './Backend/Users/Users';
+import Sidebar from './Backend/Sidebar/Sidebar';
+import AddCategory from './Backend/Categories/AddCategory';
+import UpdateCategory from './Backend/Categories/UpdateCategory';
+import AllCategory from './Backend/Categories/AllCategory';
+import AllProduct from './Backend/Products/AllProduct';
+import AddProduct from './Backend/Products/AddProduct';
+import UpdateProduct from './Backend/Products/UpdateProduct';
+import AllBlog from './Backend/Blogs/AllBlog';
+import AddBlog from './Backend/Blogs/AddBlog';
+import UpdateBlog from './Backend/Blogs/UpdateBlog';
 
 export const productContext = createContext()
 
@@ -48,19 +59,26 @@ function App() {
         <Route path='/lunches' element={<Lunches/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/signin' element={<Signin/>}/>
-        {/* <Route path='/user' element={<Users/>}/> */}
         <Route path='/privacy' element={<Privacy/>}/>
         <Route path='/terms' element={<Terms/>}/>
   
         {/* ===============Backend Route============= */}
-         <Route path="/dashboard" element={<RequireAuth><Backend /></RequireAuth>} >
-          <Route index element={<Backend/>}></Route>
-          {/* <Route path="review" element={<MyReview></MyReview>}></Route>
-          <Route path="history" element={<MyHistory></MyHistory>}></Route>
-          <Route path="payment/:id" element={<Payment></Payment>}></Route>
-          <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
-          <Route path="addDoctor" element={<RequireAdmin><AddDoctor></AddDoctor></RequireAdmin>}></Route>
-          <Route path="manageDoctor" element={<RequireAdmin><ManageDoctors></ManageDoctors></RequireAdmin>}></Route> */}
+        <Route path="/dashboard" element={<RequireAuth><Backend/></RequireAuth>} >
+          <Route index element={<Sidebar/>}></Route>
+          <Route path="user" element={<Users/>}></Route>
+
+          <Route path="categories" element={<AllCategory/>}></Route>
+          <Route path="addCategory" element={<AddCategory/>}></Route>
+          <Route path="updateCategory" element={<UpdateCategory/>}></Route>
+
+          <Route path="products" element={<AllProduct/>}></Route>
+          <Route path="addProduct" element={<AddProduct/>}></Route>
+          <Route path="updateProduct" element={<UpdateProduct/>}></Route>
+
+          <Route path="blogs" element={<AllBlog/>}></Route>
+          <Route path="addBlog" element={<AddBlog/>}></Route>
+          <Route path="updateBlog" element={<UpdateBlog/>}></Route>
+
         </Route>
 
         {/* ==== Not Found === */}

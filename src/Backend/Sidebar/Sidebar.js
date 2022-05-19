@@ -1,7 +1,10 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../Firebase/Firebase.init';
 
 const Sidebar = () => {
+	const[user]=useAuthState(auth)
 	return (
 		<div className="w-60 h-full shadow-md bg-white absolute" id="sidenavSecExample">
 
@@ -12,7 +15,7 @@ const Sidebar = () => {
 						<img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" className="rounded-full w-10" alt="Avatar"/>
 						</div>
 						<div className="grow ml-3">
-						<p className="text-sm font-semibold text-blue-600">Jason McCoel</p>
+						<p className="text-sm font-semibold text-blue-600">{user?.displayName}</p>
 						</div>
 					</div>
 				</a>
@@ -36,10 +39,14 @@ const Sidebar = () => {
 					</a>
 					<ul className="relative accordion-collapse collapse" id="collapseSidenavSecEx2" aria-labelledby="sidenavSecEx2" data-bs-parent="#sidenavSecExample">
 						<li className="relative">
-							<a href="#!" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">All Category</a>
+							<Link to="/dashboard/categories" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+								All Category
+							</Link>
 						</li>
 						<li className="relative">
-							<a href="#!" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Add Category</a>
+							<Link to="/dashboard/addCategory" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+								Add Category
+							</Link>	
 						</li>
 					</ul>
 				</li>
@@ -52,10 +59,14 @@ const Sidebar = () => {
 					</a>
 					<ul className="relative accordion-collapse collapse" id="collapseSidenavSecEx3" aria-labelledby="sidenavSecEx3" data-bs-parent="#sidenavSecExample">
 						<li className="relative">
-							<a href="#!" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Link 3</a>
+							<Link to="/dashboard/products" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+								All Product
+							</Link>
 						</li>
 						<li className="relative">
-							<a href="#!" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Link 4</a>
+							<Link to="/dashboard/addProduct" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+								Add Product
+							</Link>	
 						</li>
 					</ul>
 				</li>
@@ -68,13 +79,29 @@ const Sidebar = () => {
 					</a>
 					<ul className="relative accordion-collapse collapse" id="collapseSidenavSecEx4" aria-labelledby="sidenavSecEx4" data-bs-parent="#sidenavSecExample">
 						<li className="relative">
-							<a href="#!" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Link 3</a>
+							<Link to="/dashboard/blogs" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+								All Blog
+							</Link>
 						</li>
 						<li className="relative">
-							<a href="#!" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Link 4</a>
+							<Link to="/dashboard/addBlog" className="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+								Add Blog
+							</Link>	
 						</li>
 					</ul>
 				</li>
+
+				<hr className='my-2'/>
+				<Link to="/dashboard/user">
+					<div className="flex items-center">
+						<div className="shrink-0">
+						<img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" className="rounded-full w-10" alt="Avatar"/>
+						</div>
+						<div className="grow ml-3">
+						<p className="text-sm font-semibold text-blue-600">Users</p>
+						</div>
+					</div>
+				</Link>
 
 			</ul>
 			<div className="text-center bottom-0 absolute w-full">
