@@ -7,20 +7,21 @@ import logo from '../../Assets/logo.png';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../Loading/Loading';
 import './Auth.css';
+import useToken from '../../Hooks/useToken';
 
 const Signup = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
 	const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+    const [token] = useToken(user);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     useEffect( () =>{
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, from, navigate])
+    }, [token, from, navigate])
 
     useEffect(() => {
         if (error || updateError) {
@@ -48,8 +49,8 @@ const Signup = () => {
     }
 
 	const handleRegister = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
+        await createUserWithEmailAndPassword(data.email, data.password);
         toast.success("Email vaification link sent");
     }
 	return (

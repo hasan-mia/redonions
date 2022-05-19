@@ -24,7 +24,7 @@ import BlogDetails from './Frontend/BlogDetails/BlogDetails';
 import Privacy from './Frontend/Pages/Privacy-Terms/Privacy';
 import Terms from './Frontend/Pages/Privacy-Terms/Terms';
 import Notfound from './Frontend/NotFound/Notfound';
-import Backend from './Backend/Pages/Bakend';
+import Backend from './Backend/Pages/Backend';
 
 export const productContext = createContext()
 

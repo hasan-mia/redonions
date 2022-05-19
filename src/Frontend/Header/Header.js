@@ -5,12 +5,13 @@ import './Header.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
+import styles from '../../Backend/Backend.module.css'
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
     const [navbarOpen, setNavbarOpen] = useState(false);
 	return (
-		<header id="navbar" className="w-full md:mb-0 mb-8">
+		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
             <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
                 <div className="container px-8 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">

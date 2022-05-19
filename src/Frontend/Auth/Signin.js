@@ -8,23 +8,25 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { toast } from 'react-toastify';
 import Loading from '../Loading/Loading';
+import useToken from '../../Hooks/useToken';
 
 const Signin = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
 	const [ signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
-	
+	const [token] = useToken(user);
+
 	const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
 	useEffect( () =>{
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
-            toast.success("Welcome", user?.displayName);
+            toast.success("Welcome Back");
         }
-    }, [user, from, navigate])
+    }, [token, from, navigate])
 
-	 useEffect(() => {
+	useEffect(() => {
         if (error) {
             switch (error?.code) {
                 case "auth/invalid-email":

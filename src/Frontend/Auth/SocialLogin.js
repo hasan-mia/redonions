@@ -3,27 +3,27 @@ import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../Firebase/Firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Loading/Loading';
 
 const SocialLogin = () => {
 	const [signInWithGoogle, googleUser, googleloading, googleError] = useSignInWithGoogle(auth);
 	const [signInWithFacebook, facbookuser, facebookloading, facebookerror] = useSignInWithFacebook(auth);
-
+    const [token] = useToken(googleUser || facbookuser);
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.state?.from?.pathname || "/";
 
 	useEffect( () =>{
-        if (googleUser || facbookuser) {
+        if (token) {
             navigate(from, { replace: true });
-            if (googleUser) {
-              toast.success("Welcome", googleUser?.displayName);
-            }
-            if (facbookuser) {
-              toast.success("Welcome", facbookuser?.displayName);
+            if (token) {
+              toast.success("Welcome Back");
+            }else {
+              toast.success("Token not created");
             }
         }
-    }, [googleUser, facbookuser, from, navigate])
+    }, [token, from, navigate])
 
 	 useEffect(() => {
         if (googleError || facebookerror) {
