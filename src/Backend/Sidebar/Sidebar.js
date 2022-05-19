@@ -92,7 +92,7 @@ const Sidebar = () => {
 				</li>
 
 				<hr className='my-2'/>
-				<Link to="/dashboard/user">
+				<Link to="/dashboard/users">
 					<div className="flex items-center">
 						<div className="shrink-0">
 						<img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" className="rounded-full w-10" alt="Avatar"/>

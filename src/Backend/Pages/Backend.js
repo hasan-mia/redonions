@@ -5,9 +5,15 @@ import Sidebar from '../Sidebar/Sidebar';
 const Backend = () => {
 	return (
 		<main className='h-screen'>
-			<Sidebar></Sidebar>
+			<div className="grid grid-cols-1 lg:grid-cols-2">
+				<div className='sidebar w-20'>
+					<Sidebar></Sidebar>
+				</div>
 			
-			<Outlet></Outlet>
+				<div className="outlet w-full">
+					<Outlet></Outlet>
+				</div>
+			</div>
 		</main>
 	);
 };

@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/Firebase.init";
 
-const useUsers = (url) => {
-    const [user]=useAuthState(auth)
-    const [userlist, setUserList] = useState([])
+const useBlog = (url) => {
+	const [user]=useAuthState(auth)
+    const [blogs, setBlogs] = useState([])
     const [isLoad, setIsLoad] = useState(true)
     useEffect(() => {
         fetch(`${url}`, {
@@ -14,11 +14,11 @@ const useUsers = (url) => {
             }
         })
         .then((response) => response.json())
-        .then((data) => setUserList(
+        .then((data) => setBlogs(
         data, setIsLoad(false)));
     }, [isLoad])
 
-    return [userlist, isLoad]
+    return [blogs, isLoad]
 };
 
-export default useUsers;
+export default useBlog;
