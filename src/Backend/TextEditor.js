@@ -25,16 +25,35 @@ const TextEditor = () => {
   }
 
 	return (
-		<>
-			<Editor 
-			editorState={editorState}
-			onEditorStateChange={setEditorState}
-			wrapperClassName = "wrapper-class"
-			editorClassName = "editor-class"
-			toolbarClassName = "toolbar-class"
-			/>;
-		<div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div>
-		</>
+    <div className='grid grid-flow-col'>
+        <form action="">
+          <div className='border'>
+            <div className="px-2">
+              <label htmlFor="title" className='text-2xl'>Add Title</label>
+              <input type="text" name='title' placeholder='Enter Title'  className='w-full p-2 border'/>
+            </div>
+            <div className='grid grid-cols-1 lg:grid-cols-2'>
+              <div className='p-2'>
+                <label htmlFor="description" className='text-2xl'>Desciption</label>
+                <Editor 
+                editorState={editorState}
+                onEditorStateChange={setEditorState}
+                wrapperClassName = "wrapper-class"
+                editorClassName = "editor-class"
+                toolbarClassName = "toolbar-class"
+                />
+              </div>
+
+              <div className='p-2'>
+                <label htmlFor="image" className='text-2xl'>Image</label>
+                <input type="file" name='title' placeholder='Enter Title'  className='w-full p-2 border'/>
+
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
 	);
 };
 

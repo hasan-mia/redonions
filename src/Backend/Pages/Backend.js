@@ -9,7 +9,7 @@ const Backend = () => {
 				<Sidebar></Sidebar>
 			</div>
 			
-			<div className="outlet">
+			<div className="outlet mx-10">
 				<Outlet></Outlet>
 			</div>
 		</main>

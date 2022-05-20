@@ -26,7 +26,6 @@ import Terms from './Frontend/Pages/Privacy-Terms/Terms';
 import Notfound from './Frontend/NotFound/Notfound';
 import Backend from './Backend/Pages/Backend';
 import Users from './Backend/Users/Users';
-import Sidebar from './Backend/Sidebar/Sidebar';
 import AddCategory from './Backend/Categories/AddCategory';
 import UpdateCategory from './Backend/Categories/UpdateCategory';
 import AllCategory from './Backend/Categories/AllCategory';
