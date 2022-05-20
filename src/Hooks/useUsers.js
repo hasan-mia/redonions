@@ -2,23 +2,24 @@ import { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/Firebase.init";
 
-const useUsers = (url) => {
+const useUsers = () => {
     const [user]=useAuthState(auth)
-    const [userlist, setUserList] = useState([])
+    const [users, setUsers] = useState([])
     const [isLoad, setIsLoad] = useState(true)
     useEffect(() => {
-        fetch(`${url}`, {
+        fetch(`http://localhost:5000/users`, {
+            method:'GET',
             headers: {
                 'content-type': 'application/json',
                 authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
             }
         })
         .then((response) => response.json())
-        .then((data) => setUserList(
+        .then((data) => setUsers(
         data, setIsLoad(false)));
-    }, [isLoad])
+    }, [user, isLoad])
 
-    return [userlist, isLoad]
+    return {users, setUsers, isLoad, setIsLoad}
 };
 
 export default useUsers;

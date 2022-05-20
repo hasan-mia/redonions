@@ -5,14 +5,17 @@ import './Header.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
+// import useUsers from '../../Hooks/useUsers';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
+    const {admin} = useAdmin();
     const [navbarOpen, setNavbarOpen] = useState(false);
 	return (
 		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
             {
-                user ?
+                admin.admin === true?
                 <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
                     <div className="container px-8 mx-auto flex flex-wrap items-center justify-between">
                         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
@@ -33,7 +36,7 @@ const Header = ({ fixed }) => {
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 
                             {
-                                user &&
+                                admin.admin === true &&
                                 <Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl bg-red-500 text-white"
                                 to="/dashboard">Red Onion Dashboard</Link>
                             }
@@ -79,17 +82,7 @@ const Header = ({ fixed }) => {
                             </button>
                         </div>
                         <div className={"lg:flex flex-grow items-center" +(navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
-                        {/* Main Right Item */}
-                        <ul className="flex flex-col lg:flex-row list-none lg:mr-auto">
-
-                            {
-                                user &&
-                                <Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
-                                to="/dashboard">Dashboard</Link>
-                            }
-                            
-                        
-                        </ul>
+                      
                         
                         {/* Main Right Item */}
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
