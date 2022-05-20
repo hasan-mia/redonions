@@ -4,3 +4,6 @@ a{
 li{
 	list-style: none;
 }
+.h-screen {
+    min-height: 100vh;
+}

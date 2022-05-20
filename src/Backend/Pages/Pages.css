@@ -1,0 +1,9 @@
+/* main.backend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%,10fr));
+    grid-auto-rows: minmax(1px, auto);
+} */
+.outlet {
+    margin-left: 20%;
+    margin-right: 5%;
+}

@@ -64,7 +64,7 @@ function App() {
   
         {/* ===============Backend Route============= */}
         <Route path="/dashboard" element={<RequireAuth><Backend/></RequireAuth>} >
-          <Route index element={<Sidebar/>}></Route>
+          <Route index element={<Users/>}></Route>
           <Route path="users" element={<Users/>}></Route>
 
           <Route path="categories" element={<AllCategory/>}></Route>

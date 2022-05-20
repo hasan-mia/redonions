@@ -6,7 +6,7 @@ import auth from '../../Firebase/Firebase.init';
 const Sidebar = () => {
 	const[user]=useAuthState(auth)
 	return (
-		<div className="w-60 h-full shadow-md bg-white absolute" id="sidenavSecExample">
+		<div className="w-60 h-100 pb-16 shadow-md bg-white absolute" id="sidenavSecExample">
 
 			<div className="pt-4 pb-2 px-6">
 				<a href="#!">

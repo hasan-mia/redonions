@@ -28,7 +28,18 @@ const Header = ({ fixed }) => {
                         </button>
                     </div>
                 <div className={"lg:flex flex-grow items-center" +(navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
+                    {/* Main Right Item */}
+                    <ul className="flex flex-col lg:flex-row list-none lg:mr-auto">
 
+                        {
+                            user &&
+                            <Link className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
+                            to="/dashboard">Dashboard</Link>
+                        }
+                        
+                       
+                    </ul>
+                    
                     {/* Main Right Item */}
                     <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                         <li className="nav-item">

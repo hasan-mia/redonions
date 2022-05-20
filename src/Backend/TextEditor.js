@@ -5,7 +5,7 @@ import { Editor } from "react-draft-wysiwyg";
 import DOMPurify from 'dompurify';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-const AddCategory = () => {
+const TextEditor = () => {
 	  const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
   );
@@ -38,4 +38,4 @@ const AddCategory = () => {
 	);
 };
 
-export default AddCategory;
+export default TextEditor;
