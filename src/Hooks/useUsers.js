@@ -16,7 +16,7 @@ const useUsers = () => {
         })
         .then((response) => response.json())
         .then((data) => setUsers(
-        data, setIsLoad(false)));
+        data), setIsLoad(false));
     }, [user, isLoad])
 
     return {users, setUsers, isLoad, setIsLoad}

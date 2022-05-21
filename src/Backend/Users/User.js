@@ -1,10 +1,13 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Loading from '../../Frontend/Loading/Loading';
+import useUsers from '../../Hooks/useUsers';
 
 const User = ({item, index, setIsLoad}) => {
-	
+	const {users, setUsers, isLoad} = useUsers();
 	const {name, email, role} = item;
-
+	
+    // Make Admin
 	const makeAdmin = () => {
         fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
@@ -20,11 +23,39 @@ const User = ({item, index, setIsLoad}) => {
             .then(data => {
                 if (data.modifiedCount > 0) {
 					setIsLoad(true);
-                    toast.success(`Successfully made an admin`);
                 }
-
+                toast.success(`Successfully made an admin`);
             })
     }
+
+	// Delete User
+	const handleDelete = () => {
+        const confirm = window.confirm('Are you sure you want to delete?');
+
+        if(confirm){
+            const url = `http://localhost:5000/delete-admin/${email}`;
+            fetch(url, {
+                method: 'DELETE',
+				headers: {
+                    authorization: `${email} ${localStorage.getItem('accessToken')}`
+                }
+            })
+            .then(res => res.json())
+            .then(data =>{
+                if(data.deletedCount > 0){
+					// const remaining = users.filter(item => item.email !== email);
+                    // setUsers(remaining);
+					setIsLoad(true);
+                }
+                toast.success("Deleted Successfully");
+            })
+        }
+    }
+
+	if (isLoad) {
+		return <Loading></Loading>
+	}
+
 	return (
 		<tr className="bg-white border-b">
 			<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
@@ -32,11 +63,14 @@ const User = ({item, index, setIsLoad}) => {
 				{name? name : email}
 			</td>
 			<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-				{/* {role === 'admin'? role : <button className='btn'>Make Admin</button>} */}
-				{role !== 'admin' && <button onClick={makeAdmin} className="btn btn-xs">Make Admin</button>}
+				{role === 'admin' ? 
+				<p className='text-lg font-semibold'>Admin</p>
+				:
+				<button onClick={makeAdmin} className="btn btn-xs bg-green-500 text-white p-1 rounded-md">Make Admin</button>
+			}
 			</td>
 			<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-				<button className=""> <span className="fas fa-trash-alt"></span></button> 
+				<button onClick={() => handleDelete() } > <span className="fas fa-trash-alt"></span></button> 
 			</td>
 		</tr>
 	);

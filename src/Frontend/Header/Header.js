@@ -5,12 +5,11 @@ import './Header.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
-// import useUsers from '../../Hooks/useUsers';
 import useAdmin from '../../Hooks/useAdmin';
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
-    const {admin} = useAdmin();
+    const {admin} = useAdmin(user);
     const [navbarOpen, setNavbarOpen] = useState(false);
 	return (
 		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
