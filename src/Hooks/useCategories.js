@@ -2,23 +2,24 @@ import { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/Firebase.init";
 
-const useBlog = (url) => {
-	const [user]=useAuthState(auth)
-    const [blogs, setBlogs] = useState([])
+const useCategories = () => {
+    const [user]=useAuthState(auth)
+    const [categories, setCategories] = useState([])
     const [isLoad, setIsLoad] = useState(true)
     useEffect(() => {
-        fetch(`${url}`, {
+        fetch(`http://localhost:5000/categories`,{
+            method: 'GET',
             headers: {
                 'content-type': 'application/json',
                 authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
             }
         })
         .then((response) => response.json())
-        .then((data) => setBlogs(
+        .then((data) => setCategories(
         data, setIsLoad(false)));
-    }, [isLoad])
+    }, [categories, isLoad, user?.email])
 
-    return [blogs, isLoad]
+    return {categories,setCategories, isLoad, setIsLoad}
 };
 
-export default useBlog;
+export default useCategories;
