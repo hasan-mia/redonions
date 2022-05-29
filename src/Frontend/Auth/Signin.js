@@ -22,7 +22,7 @@ const Signin = () => {
 	useEffect( () =>{
         if (token) {
             navigate(from, { replace: true });
-            toast.success("Welcome Back");
+            toast.success("Successfully login");
         }
     }, [token, from, navigate])
 

@@ -6,8 +6,8 @@ import {toast} from 'react-toastify';
 import logo from '../../Assets/logo.png';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../Loading/Loading';
-import './Auth.css';
 import useToken from '../../Hooks/useToken';
+import './Auth.css';
 
 const Signup = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();

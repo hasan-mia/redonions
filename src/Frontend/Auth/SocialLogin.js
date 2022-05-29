@@ -18,7 +18,7 @@ const SocialLogin = () => {
         if (token) {
             navigate(from, { replace: true });
             if (token) {
-              toast.success("Welcome Back");
+              toast.success("Successfully login");
             }else {
               toast.success("Token not created");
             }

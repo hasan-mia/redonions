@@ -16,10 +16,11 @@ const Header = ({ fixed }) => {
             {
                 admin.admin === true?
                 <nav className="relative flex flex-wrap items-center justify-between p-2 lg:border-b bg-white">
-                    <div className="container px-8 mx-auto flex flex-wrap items-center justify-between">
+                    <div className={`container ${ admin.admin===true ? 'px-0' : 'px-8'} mx-auto flex flex-wrap items-center justify-between`}>
                         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                            <button className="flex whitespace-nowrap px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                                <i className='fas fa-bars fa-2x'></i>
+                            <button className="flex whitespace-nowrap px-3 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                <i className='fas fa-bars text-lg'></i>
+                                <span className='ml-2 text-lg'>Dashboard</span>
                             </button>
                          
                             <button

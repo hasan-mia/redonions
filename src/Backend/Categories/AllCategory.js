@@ -38,8 +38,8 @@ const AllCategory = () => {
 	}
 	return (
 		<div class="w-full">
-			<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-				<div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+			<div class="overflow-x-auto mx-0 lg:-mx-8">
+				<div class="py-4 inline-block min-w-full px-0 lg:px-8">
 				<div class="overflow-hidden">
 					<table class="min-w-full text-center">
 					<thead class="border-b bg-gray-50">
@@ -54,7 +54,8 @@ const AllCategory = () => {
 							Image
 						</th>
 						<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-							Delete
+							<button>Edit/</button>
+							<button>Delete</button>
 						</th>
 						</tr>
 					</thead>
@@ -66,12 +67,12 @@ const AllCategory = () => {
 									<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 										{item.title}
 									</td>
-									<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-										<img src={item.img} alt="cat-image" className='w-1/4 h-1/4'/>
+									<td className="text-sm text-gray-900 flex justify-center font-light px-6 py-4 whitespace-nowrap">
+										<img src={item.img} alt="cat-image" className='h-1/12 w-1/6'/>
 									</td>
-									<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-										<button onClick={()=>handleCategorytDelete(item._id)}> <span className="fas fa-trash-alt"></span></button> 
-									<span>{typeof item._id}</span>
+									<td className="text-sm text-gray-900 font-light py-4 whitespace-nowrap">
+										<button className='px-2'> <span className="far fa-edit text-lg text-green-700 p-1 rounded-md"></span></button> 
+										<button onClick={()=>handleCategorytDelete(item._id)} className='px-2'> <span className="fas fa-trash-alt text-lg text-red-500 p-1 rounded-md"></span></button> 
 									</td>
 								</tr>
 							)
