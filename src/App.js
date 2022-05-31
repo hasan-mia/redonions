@@ -34,6 +34,7 @@ import useCategories from './Hooks/useCategories';
 export const productContext = createContext()
 
 function App() {
+
   const {products, setProducts, isLoad, setIsLoad} = useProducts();
   const {blogs} = useBlogs();
   const {categories}=useCategories()
