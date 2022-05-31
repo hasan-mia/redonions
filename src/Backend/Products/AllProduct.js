@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../../Frontend/Loading/Loading';
-import useCategories from '../../Hooks/useCategories';
+import useProducts from '../../Hooks/useProducts';
 
 const AllProduct = () => {
 	const [user]=useAuthState(auth)
-	const updateCat = useNavigate();
-	const {categories, setCategories, isLoad, setIsLoad} = useCategories();
+	const updateProduct = useNavigate();
+	const {products, setProducts, isLoad, setIsLoad} = useProducts();
 	// Delete Category
-	const handleCategorytDelete = id => {
+	const handleProducttDelete = id => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `http://localhost:5000/category/${id}`;
+            const url = `http://localhost:5000/product/${id}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {
@@ -26,8 +26,8 @@ const AllProduct = () => {
             .then(res => res.json())
             .then(data =>{
                 if(data.deletedCount > 0){
-                    const remaining = categories.filter(category => category._id !== id);
-                    setCategories(remaining);
+                    // const remaining = categories.filter(category => category._id !== id);
+                    // setCategories(remaining);
 					setIsLoad(true);
                 }
 				toast.success("Deleted Successfully");
@@ -38,8 +38,9 @@ const AllProduct = () => {
 		return <Loading></Loading>
 	}
 
-	const createMarkup = (theExactHtmlWithTag) => { 
-		return { __html: theExactHtmlWithTag }
+	// Create Markup HTML
+	const createMarkup = (htmlContent) => { 
+		return { __html: htmlContent }
 	}
 
 	return (
@@ -67,20 +68,18 @@ const AllProduct = () => {
 					</thead>
 					<tbody>
 						{
-							categories.map((item, index) =>
-								<tr key={item._id} className="bg-white border-b">
+							products.map((product, index) =>
+								<tr key={product._id} className="bg-white border-b">
 									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
 									<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-										
-									<div dangerouslySetInnerHTML={createMarkup(`${item.description}` )} />
-
+										{product.title}
 									</td>
 									<td className="text-sm text-gray-900 flex justify-center font-light px-6 py-4 whitespace-nowrap">
-										<img src={item.img} alt="cat-image" className='h-1/12 w-1/6'/>
+										<img src={product.img} alt="cat-image" className='h-1/12 w-1/6'/>
 									</td>
 									<td className="text-sm text-gray-900 font-light py-4 whitespace-nowrap">
-										<button onClick={()=>updateCat(`/dashboard/updateCategory/${item._id}`)} className='px-2'> <span className="far fa-edit text-lg text-green-700 p-1 rounded-md"></span></button> 
-										<button onClick={()=>handleCategorytDelete(item._id)} className='px-2'> <span className="fas fa-trash-alt text-lg text-red-500 p-1 rounded-md"></span></button> 
+										<button onClick={()=>updateProduct(`/dashboard/updateProduct/${product._id}`)} className='px-2'> <span className="far fa-edit text-lg text-green-700 p-1 rounded-md"></span></button> 
+										<button onClick={()=>handleProducttDelete(product._id)} className='px-2'> <span className="fas fa-trash-alt text-lg text-red-500 p-1 rounded-md"></span></button> 
 									</td>
 								</tr>
 							)

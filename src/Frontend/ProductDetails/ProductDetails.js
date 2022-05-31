@@ -9,8 +9,12 @@ const ProductDetails = () => {
 	// Get All Data
 	const {products} = useContext(productContext);
 	// Get Specific Item With ID
- 	const product = products.find(item => item.id === +id);
+ 	const product = products.find(item => item._id === id);
 	const {title, description,price,img} = product;
+	// Create Markup HTML
+	const createMarkup = (htmlContent) => { 
+		return { __html: htmlContent }
+	}
 	
 	// ====Product Increment & Decrement=====
 	
@@ -32,7 +36,10 @@ const ProductDetails = () => {
 				<div className="grid md:grid-cols-2 lg:grid-cols-2 grid-cols-1 gap-3 py-4 product-details">
 					<div className="content">
 						<h1 className="text-5xl text-black"> {title}</h1>
-						<p className="text-lg text-justify my-5"> {description} </p>
+						<p className="text-lg text-justify my-5">
+							<div dangerouslySetInnerHTML={createMarkup(`${description}`)} />
+						</p>
+
 						<div className='flex justify-start pl-auto text-4xl'>
 							<span className='font-semibold'>${price}</span>
 							<div className="flex ml-8 rounded-full border-2 gap-5">

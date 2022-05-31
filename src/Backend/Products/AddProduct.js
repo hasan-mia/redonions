@@ -15,9 +15,15 @@ const AddProduct = () => {
   const{categories}=useCategories();
 
   // =========Text Editor=======
+  const initialValue = "Description"
   const editor = useRef(null);
-	const [value, setValue] = useState("");
-  const getValue = (value) => {setValue(value);};
+  // Short Description
+	const [shortdesc, setShortDesc] = useState("");
+  const getShortDesc = (shortdesc) => {setShortDesc(shortdesc);};
+
+  // Description
+	const [description, setDescription] = useState("");
+  const getDescription = (description) => {setDescription(description);};
 
   // =============React Hok Forms=======
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -39,7 +45,8 @@ const AddProduct = () => {
                 const img = result.data.url;
                 const product = {
                     title: data.title,
-                    description: value,
+                    shortdesc: shortdesc,
+                    description: description,
                     img: img,
                     category: data.category,
                     price: data.price,
@@ -85,30 +92,41 @@ const AddProduct = () => {
 
             <div className='grid lg:flex lg:flex-nowrap'>
                
-              <div className='p-2 w-12/12 lg:w-8/12 h-full'>
+              <div className='p-2 w-12/12 lg:w-6/12 h-full'>
+                <label htmlFor="shortdesc" className='text-xl uppercase'>Short Desciption</label>
+                <JoditEditor
+                  ref={editor}
+                  placeholder={initialValue}
+                  config={config}
+                  tabIndex={1}
+                  onChange={(newContent) => getShortDesc(newContent)}
+                /> 
+              </div>
+
+              <div className='p-2 w-12/12 lg:w-6/12 h-full'>
                 <label htmlFor="description" className='text-xl uppercase'>Desciption</label>
                 <JoditEditor
                   ref={editor}
-                  // value={initialValue}
+                  placeholder={initialValue}
                   config={config}
                   tabIndex={1}
-                  //   onBlur={(newContent) => getValue(newContent)}
-                  onChange={(newContent) => getValue(newContent)}
-              />
-                
+                  onChange={(newContent) => getDescription(newContent)}
+                /> 
               </div>
+            </div>
 
-              <div className='p-2 w-12/12 lg:w-4/12'>
+            <div className='grid grid-cols-2 gap-2'>
                <div class="grid">
-                  <label htmlFor="image" className='text-lg uppercase'>Image</label>
+                <label htmlFor="image" className='text-lg uppercase'>Image</label>
                 <input type="file" placeholder='image' className='w-full mt-2 p-2 border'
                   {...register("image")}
                 required/>
                </div>
 
                 {/* ===Select Category== */}
-                <div class="flex justify-center mt-1">
-                    <select {...register('category')} class="form-select form-select-lg mb-3 appearance-none block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
+                <div class="grid">
+                  <label htmlFor="category" className='text-lg uppercase'>Category</label>
+                    <select {...register('category')} class="form-select form-select-lg appearance-none block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
                       <option selected>Select Category</option>
                       {
                           categories.map(category => <option
@@ -118,27 +136,25 @@ const AddProduct = () => {
                       }
                     </select>
                 </div>
-                
-                <div className='grid lg:flex lg:gap-1'>
-                    <div class="grid">
-                      <label htmlFor="price" className='text-lg uppercase'>Price</label>
-                      <input type="text" placeholder='price' className='w-full mt-2 p-2 border'
-                        {...register("price")}
-                      required/>
-                  </div>
+            </div>  
+            <div className='grid grid-cols-2 gap-2'>
+                <div class="grid">
+                  <label htmlFor="price" className='text-lg uppercase'>Price</label>
+                  <input type="text" placeholder='price' className='w-full mt-2 p-2 border'
+                    {...register("price")}
+                  required/>
+              </div>
                   
-                    <div class="grid">
-                    <label htmlFor="quantity" className='text-lg uppercase'>Quantity</label>
-                    <input type="number" placeholder='quantity' className='w-full mt-2 p-2 border'
-                      {...register("quantity")}
-                    required/>
-                  </div>
-                </div>
-
+                <div class="grid">
+                <label htmlFor="quantity" className='text-lg uppercase'>Quantity</label>
+                <input type="number" placeholder='quantity' className='w-full mt-2 p-2 border'
+                  {...register("quantity")}
+                required/>
               </div>
             </div>
+
           </div>
-          <button className='btn w-full max-w-x mt-12 bg-green-500 p-1.5 uppercase rounded-md text-2xl text-white font-semibold' type="submit">Add Product</button>
+          <button className='btn w-full max-w-x mt-6 bg-green-500 p-1.5 uppercase rounded-md text-2xl text-white font-semibold' type="submit">Add Product</button>
         </form>
       </div>
     </section>

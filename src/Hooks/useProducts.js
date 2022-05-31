@@ -3,7 +3,7 @@ const useProducts = () => {
     const [products, setProducts] = useState([])
     const [isLoad, setIsLoad] = useState(true)
 	useEffect(() => {
-		fetch('data/products.json')
+		fetch('http://localhost:5000/products')
 		.then((res) => res.json())
         .then((data) => setProducts(
         data, setIsLoad(false)));

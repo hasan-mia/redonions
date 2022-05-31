@@ -63,11 +63,11 @@ function App() {
 
           <Route path="products" element={<AllProduct/>}></Route>
           <Route path="addProduct" element={<AddProduct/>}></Route>
-          <Route path="updateProduct" element={<UpdateProduct/>}></Route>
+          <Route path="updateProduct/:id" element={<UpdateProduct/>}></Route>
 
           <Route path="blogs" element={<AllBlog/>}></Route>
           <Route path="addBlog" element={<AddBlog/>}></Route>
-          <Route path="updateBlog" element={<UpdateBlog/>}></Route>
+          <Route path="updateBlog/:id" element={<UpdateBlog/>}></Route>
 
         </Route>
 
