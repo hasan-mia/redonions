@@ -1,24 +1,15 @@
 import { useEffect, useState } from "react"
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../Firebase/Firebase.init";
-
-const useProducts = (url) => {
-	const [user]=useAuthState(auth)
+const useProducts = () => {
     const [products, setProducts] = useState([])
     const [isLoad, setIsLoad] = useState(true)
-    useEffect(() => {
-        fetch(`${url}`, {
-            headers: {
-                'content-type': 'application/json',
-                authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
-            }
-        })
-        .then((response) => response.json())
+	useEffect(() => {
+		fetch('data/products.json')
+		.then((res) => res.json())
         .then((data) => setProducts(
         data, setIsLoad(false)));
     }, [isLoad])
 
-    return [products, isLoad]
+    return {products, setProducts, isLoad, setIsLoad}
 };
 
 export default useProducts;

@@ -29,6 +29,17 @@
     margin-top: 21px;
 }
 
+.input-number {
+    display: flex;
+    width: 9rem;
+    text-align: center;
+    justify-content: center;
+    color: #000;
+    border-radius: 30px;
+    padding: 5px 10px;
+    margin-top: 21px;
+}
+
 @media(max-width:767px){
 	.product-details {
 		display: flex;

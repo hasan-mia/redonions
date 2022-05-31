@@ -38,7 +38,7 @@ const AllCategory = () => {
 	}
 	return (
 		<div class="w-full">
-			<div class="overflow-x-auto mx-0 lg:-mx-8">
+			<div class="overflow-x-auto mx-2 lg:-mx-8">
 				<div class="py-4 inline-block min-w-full px-0 lg:px-8">
 				<div class="overflow-hidden">
 					<table class="min-w-full text-center">
