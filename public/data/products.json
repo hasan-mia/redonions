@@ -1,6 +1,7 @@
 [
 	{
 		"title": "Bagel and Creame Chease",
+		"category": "breakfast",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 1,
 		"img": "https://i.imgur.com/2Cyr4rG.png",
@@ -8,6 +9,7 @@
 	},
 	{
 		"title": "Breakfast sandwitch",
+		"category": "breakfast",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 2,
 		"img": "https://i.imgur.com/CcR9Hth.png",
@@ -15,6 +17,7 @@
 	},
 	{
 		"title": "Backed Chicken",
+		"category": "breakfast",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 3,
 		"img": "https://i.imgur.com/nhpsR7x.png",
@@ -22,6 +25,7 @@
 	},
 	{
 		"title": "Egg Benedict",
+		"category": "breakfast",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 4,
 		"img": "https://i.imgur.com/Tjl77hq.png",
@@ -29,6 +33,7 @@
 	},
 	{
 		"title": "Toast Croissant Fried Egg",
+		"category": "breakfast",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 5,
 		"img": "https://i.imgur.com/tRmoj9w.png",
@@ -36,6 +41,7 @@
 	},
 	{
 		"title": "Full Fried Egg Toast Brunch",
+		"category": "breakfast",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 6,
 		"img": "https://i.imgur.com/eSAhFxf.png",
@@ -43,6 +49,7 @@
 	},
 	{
 		"title": "Healthy Meal Plan",
+		"category": "lunch",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 13,
 		"img": "https://i.imgur.com/wdWvEtb.png",
@@ -50,6 +57,7 @@
 	},
 	{
 		"title": "Fried Chicken Bento",
+		"category": "lunch",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 14,
 		"img": "https://i.imgur.com/5mzI2fx.png",
@@ -57,6 +65,7 @@
 	},
 	{
 		"title": "Tarragon-Rubbet-Salmon",
+		"category": "lunch",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 15,
 		"img": "https://i.imgur.com/ZsMGwxq.png",
@@ -64,6 +73,7 @@
 	},
 	{
 		"title": "Indian Lunch",
+		"category": "lunch",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 16,
 		"img": "https://i.imgur.com/oF1SqMG.png",
@@ -71,6 +81,7 @@
 	},
 	{
 		"title": "Beef Steak",
+		"category": "lunch",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 17,
 		"img": "https://i.imgur.com/tpzi6qt.png",
@@ -78,6 +89,7 @@
 	},
 	{
 		"title": "Honey Soy Glazed Salmon with Peppers",
+		"category": "lunch",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 18,
 		"img": "https://i.imgur.com/1enIzKH.png",
@@ -85,6 +97,7 @@
 	},
 	{
 		"title": "Salmon with Grapefruit and lentil salad",
+		"category": "dinner",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 7,
 		"img": "https://i.imgur.com/v5RlpzG.png",
@@ -92,6 +105,7 @@
 	},
 	{
 		"title": "Lemony Salmon Piccata",
+		"category": "dinner",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 8,
 		"img": "https://i.imgur.com/24RZswi.png",
@@ -99,6 +113,7 @@
 	},
 	{
 		"title": "Pork Tenderloin Quinoa Pilaf",
+		"category": "dinner",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 9,
 		"img": "https://i.imgur.com/evqZV0j.png",
@@ -106,6 +121,7 @@
 	},
 	{
 		"title": "French fries with cheese",
+		"category": "dinner",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 10,
 		"img": "https://i.imgur.com/eOx97I8.png",
@@ -113,6 +129,7 @@
 	},
 	{
 		"title": "Gerlic Butter Backed Salmon",
+		"category": "dinner",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 11,
 		"img": "https://i.imgur.com/NS7Y0PL.png",
@@ -120,6 +137,7 @@
 	},
 	{
 		"title": "Backed Chicken",
+		"category": "dinner",
 		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium culpa, quod eaque labore corporis est voluptates enim porro dolore expedita voluptatum sint alias nam? Laudantium omnis doloremque labore doloribus!",
 		"id": 12,
 		"img": "https://i.imgur.com/HZzCD5X.png",
