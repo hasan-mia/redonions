@@ -2,9 +2,11 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Sidebar = () => {
 	const[user]=useAuthState(auth)
+	const{admin}=useAdmin(user)
 	return (
 		<>
 		<div className={`h-100`}>
@@ -96,15 +98,17 @@ const Sidebar = () => {
 									</li>
 								</ul>
 							</li>
-
-							<hr className='p-1'/>
-							<li className="relative">
-							<Link to="/dashboard/users" className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-								<span className='pr-2'><i className="fal fa-users"></i></span>
-								<p>Users</p>
-							</Link>
-							</li>
-
+							{
+								admin.admin === true &&
+								<li className="relative">
+								<hr className='p-1'/>
+								<Link to="/dashboard/users" className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+									<span className='pr-2'><i className="fal fa-users"></i></span>
+									<p>Users</p>
+								</Link>
+								</li>
+							}
+							
 						</ul>
 						<hr className="p-1"/>
 						<div className="text-center bottom-0 absolute w-full">

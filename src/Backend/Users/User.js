@@ -7,7 +7,7 @@ const User = ({item, index, setIsLoad}) => {
 	const {users, setUsers, isLoad} = useUsers();
 	const {name, email, role} = item;
 	
-    // Make Admin
+    //======= Make Admin =========
 	const makeAdmin = () => {
         fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
@@ -28,12 +28,33 @@ const User = ({item, index, setIsLoad}) => {
             })
     }
 
+    //======= Make Editor =========
+	const makeEditor = () => {
+        fetch(`http://localhost:5000/user/editor/${email}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `${email} ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if(res.status === 403){
+                    toast.error('Failed to create editor');
+                }
+                return res.json()})
+            .then(data => {
+                if (data.modifiedCount > 0) {
+					setIsLoad(true);
+                }
+                toast.success(`Successfully create editor`);
+            })
+    }
+
 	// Delete User
 	const handleDelete = () => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `http://localhost:5000/delete-admin/${email}`;
+            const url = `http://localhost:5000/delete-user/${email}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {
@@ -47,7 +68,7 @@ const User = ({item, index, setIsLoad}) => {
                     // setUsers(remaining);
 					setIsLoad(true);
                 }
-                toast.success("Deleted Successfully");
+                toast.success("Successfully Removed");
             })
         }
     }
@@ -63,11 +84,18 @@ const User = ({item, index, setIsLoad}) => {
 				{name? name : email}
 			</td>
 			<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-				{role === 'admin' ? 
+				{
+                role === 'admin' ? 
 				<p className='text-lg font-semibold'>Admin</p>
 				:
-				<button onClick={makeAdmin} className="btn btn-xs bg-green-500 text-white p-1 rounded-md">Make Admin</button>
-			}
+				role === 'editor' ? 
+				<p className='text-lg font-semibold'>Editor</p>
+				:
+                <div className='p-1'>
+                    <button onClick={makeAdmin} className="btn btn-xs bg-green-500 text-white mx-1 p-1 rounded-md">Make Admin</button>
+                    <button onClick={makeEditor} className="btn btn-xs bg-green-500 text-white mx-1 p-1 rounded-md">Make Editor</button>
+                </div>
+			    }
 			</td>
 			<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 				<button onClick={() => handleDelete() } > <span className="fas fa-trash-alt"></span></button> 

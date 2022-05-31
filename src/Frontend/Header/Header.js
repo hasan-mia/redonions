@@ -6,10 +6,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
 import useAdmin from '../../Hooks/useAdmin';
+import useEditor from '../../Hooks/useEditor';
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
     const {admin} = useAdmin(user);
+    const {editor} = useEditor(user);
     const [navbarOpen, setNavbarOpen] = useState(false);
 	return (
 		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
