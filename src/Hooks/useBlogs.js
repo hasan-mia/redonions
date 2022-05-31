@@ -6,7 +6,7 @@ const useBlogs = () => {
 		fetch('data/blogs.json')
 			.then(res => res.json())
 			.then(data => setBlogs(data))
-	}, []);
+	}, [blogs]);
 
 	return {blogs, setBlogs};
 };

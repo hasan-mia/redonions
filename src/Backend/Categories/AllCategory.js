@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../../Frontend/Loading/Loading';
@@ -7,9 +8,9 @@ import useCategories from '../../Hooks/useCategories';
 
 const AllCategory = () => {
 	const [user]=useAuthState(auth)
+	const updateCat = useNavigate();
 	const {categories, setCategories, isLoad, setIsLoad} = useCategories();
-	// Delete User
-	// Delete Product
+	// Delete Category
 	const handleCategorytDelete = id => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
@@ -37,23 +38,23 @@ const AllCategory = () => {
 		return <Loading></Loading>
 	}
 	return (
-		<div class="w-full">
-			<div class="overflow-x-auto mx-2 lg:-mx-8">
-				<div class="py-4 inline-block min-w-full px-0 lg:px-8">
-				<div class="overflow-hidden">
-					<table class="min-w-full text-center">
-					<thead class="border-b bg-gray-50">
+		<div className="w-full">
+			<div className="overflow-x-auto mx-2 lg:-mx-8">
+				<div className="py-4 inline-block min-w-full px-0 lg:px-8">
+				<div className="overflow-hidden">
+					<table className="min-w-full text-center">
+					<thead className="border-b bg-gray-50">
 						<tr>
-						<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+						<th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
 							#
 						</th>
-						<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+						<th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
 							Name
 						</th>
-						<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+						<th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
 							Image
 						</th>
-						<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+						<th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
 							<button>Edit/</button>
 							<button>Delete</button>
 						</th>
@@ -62,7 +63,7 @@ const AllCategory = () => {
 					<tbody>
 						{
 							categories.map((item, index) =>
-								<tr className="bg-white border-b">
+								<tr key={item._id} className="bg-white border-b">
 									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
 									<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 										{item.title}
@@ -71,7 +72,7 @@ const AllCategory = () => {
 										<img src={item.img} alt="cat-image" className='h-1/12 w-1/6'/>
 									</td>
 									<td className="text-sm text-gray-900 font-light py-4 whitespace-nowrap">
-										<button className='px-2'> <span className="far fa-edit text-lg text-green-700 p-1 rounded-md"></span></button> 
+										<button onClick={()=>updateCat(`/dashboard/updateCategory/${item._id}`)} className='px-2'> <span className="far fa-edit text-lg text-green-700 p-1 rounded-md"></span></button> 
 										<button onClick={()=>handleCategorytDelete(item._id)} className='px-2'> <span className="fas fa-trash-alt text-lg text-red-500 p-1 rounded-md"></span></button> 
 									</td>
 								</tr>

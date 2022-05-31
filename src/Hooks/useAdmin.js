@@ -17,7 +17,7 @@ const useAdmin = (user) => {
         .then((data) => setAdmin(
         data, setIsLoad(false)));
     }
-    }, [user, admin, isLoad])
+    }, [user])
 
     return {admin, isLoad, setIsLoad}
 };

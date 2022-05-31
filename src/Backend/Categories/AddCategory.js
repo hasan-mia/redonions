@@ -7,16 +7,16 @@ import auth from '../../Firebase/Firebase.init';
 const AddCategory = () => {
   const [user] = useAuthState(auth)
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
-  let html = '';
   const imageBBKey='91ffb587f5e2033431bd88e856e0dde6';
 
   const onSubmit = async data => {
         const image = data.image[0];
+        console.log(image);
         const formData = new FormData();
         formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?key=${imageBBKey}`;
         fetch(url, {
-            method: 'PUT',
+            method: 'POST',
             body: formData
         })
         .then(res=>res.json())
@@ -60,7 +60,7 @@ const AddCategory = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='grid grid-cols-1'>
             <div className="p-2">
-              <label htmlFor="title" className='text-xl uppercase'>Add Title</label>
+              <label htmlFor="title" className='text-xl uppercase'>Title</label>
               <input type="text" className='w-full mt-2 p-2 border'
                 {...register("title")}
               required/>
@@ -76,7 +76,7 @@ const AddCategory = () => {
 
               <div className='p-2 w-12/12 lg:w-4/12'>
                 <label htmlFor="image" className='text-lg uppercase'>Image</label>
-                <input type="file" className='w-full mt-2 p-2 border'
+                <input type="file" placeholder='image' className='w-full mt-2 p-2 border'
                   {...register("image")}
                 required/>
 

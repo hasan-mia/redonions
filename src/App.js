@@ -29,15 +29,17 @@ import UpdateBlog from './Backend/Blogs/UpdateBlog';
 import useProducts from './Hooks/useProducts';
 import Products from './Frontend/Products/Products';
 import ProductDetails from './Frontend/ProductDetails/ProductDetails';
+import useCategories from './Hooks/useCategories';
 
 export const productContext = createContext()
 
 function App() {
   const {products, setProducts, isLoad, setIsLoad} = useProducts();
   const {blogs} = useBlogs();
+  const {categories}=useCategories()
  
   return (
-    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs}}>      
+    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories}}>      
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -56,7 +58,7 @@ function App() {
 
           <Route path="categories" element={<AllCategory/>}></Route>
           <Route path="addCategory" element={<AddCategory/>}></Route>
-          <Route path="updateCategory" element={<UpdateCategory/>}></Route>
+          <Route path="updateCategory/:id" element={<UpdateCategory/>}></Route>
 
           <Route path="products" element={<AllProduct/>}></Route>
           <Route path="addProduct" element={<AddProduct/>}></Route>
