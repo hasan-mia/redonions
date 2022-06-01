@@ -9,7 +9,7 @@ import useProducts from '../../Hooks/useProducts';
 const AllProduct = () => {
 	const [user]=useAuthState(auth)
 	const updateProduct = useNavigate();
-	const {products, setProducts, isLoad, setIsLoad} = useProducts();
+	const {products, isLoad, setIsLoad} = useProducts();
 	// Delete Category
 	const handleProducttDelete = id => {
         const confirm = window.confirm('Are you sure you want to delete?');
@@ -26,8 +26,6 @@ const AllProduct = () => {
             .then(res => res.json())
             .then(data =>{
                 if(data.deletedCount > 0){
-                    // const remaining = categories.filter(category => category._id !== id);
-                    // setCategories(remaining);
 					setIsLoad(true);
                 }
 				toast.success("Deleted Successfully");
@@ -36,11 +34,6 @@ const AllProduct = () => {
     }
 	if (isLoad) {
 		return <Loading></Loading>
-	}
-
-	// Create Markup HTML
-	const createMarkup = (htmlContent) => { 
-		return { __html: htmlContent }
 	}
 
 	return (
