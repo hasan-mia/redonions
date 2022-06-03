@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { Tab } from '@headlessui/react'
 import './Products.css'
 import useProducts from '../../Hooks/useProducts';

@@ -1,16 +1,18 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { productContext } from '../../App';
+import useCarts from '../../Hooks/useCarts';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
 	// Get Id From Navigate
 	const {id} = useParams();
 	// Get All Data
-	const {products} = useContext(productContext);
+	const {products, cart, dispatch} = useContext(productContext);
 	// Get Specific Item With ID
  	const product = products.find(item => item._id === id);
 	const {title, description,price,img} = product;
+	let total = price;
 	// Create Markup HTML
 	const createMarkup = (htmlContent) => { 
 		return { __html: htmlContent }
@@ -18,18 +20,21 @@ const ProductDetails = () => {
 	
 	// ====Product Increment & Decrement=====
 	
-	const reducer = (state, action) => {
-		if (action.type === 'increment') {
-			state = state + 1;
-		}
-		if (state > 0 && action.type === 'decrement') {
-			state = state - 1;
-		}
-		return state;
-	}
-	const count =0;
-	const[state, dispatch]=useReducer(reducer, count);
+	// const reducer = (cart, action) => {
+	// 	if (action.type === 'increment') {
+	// 		cart = cart + 1;
+	// 	}
+	// 	if (cart > 1 && action.type === 'decrement') {
+	// 		cart = cart - 1;
+	// 	}
+	// 	return cart;
+	// }
+	// const initState = 1;
+	// const{cart, dispatch}=useCarts(reducer, initState);
 	
+	if (cart > 0) {
+		total = price * cart;
+	}
 	return (
 		<section className='flex justify-center'>
 			<div className="container px-16">
@@ -41,10 +46,10 @@ const ProductDetails = () => {
 						</p>
 
 						<div className='flex justify-start pl-auto text-4xl'>
-							<span className='font-semibold'>${price}</span>
+							<span className='font-semibold'>${total}</span>
 							<div className="flex ml-8 rounded-full border-2 gap-5">
 								<button onClick={()=>dispatch({type:'decrement'})} className=' text-gray-500 p-1'>-</button>
-									<input type="text" value={state} className='text-gray-600 text-3xl w-8'/>
+									<input type="text" value={cart} className='text-gray-600 text-3xl w-8'/>
 								<button onClick={()=>dispatch({type:'increment'})} className=' text-red-500 p-1'>+</button>
 							</div>
 						</div>

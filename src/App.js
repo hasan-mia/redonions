@@ -30,6 +30,7 @@ import useProducts from './Hooks/useProducts';
 import Products from './Frontend/Products/Products';
 import ProductDetails from './Frontend/ProductDetails/ProductDetails';
 import useCategories from './Hooks/useCategories';
+import useCarts from './Hooks/useCarts';
 
 export const productContext = createContext()
 
@@ -38,9 +39,22 @@ function App() {
   const {products, setProducts, isLoad, setIsLoad} = useProducts();
   const {blogs} = useBlogs();
   const {categories}=useCategories()
+
+  // ====Product Increment & Decrement=====
+	const reducer = (cart, action) => {
+		if (action.type === 'increment') {
+			cart = cart + 1;
+		}
+		if (cart > 1 && action.type === 'decrement') {
+			cart = cart - 1;
+		}
+		return cart;
+	}
+	const initState = 1;
+	const{cart, dispatch}=useCarts(reducer, initState);
  
   return (
-    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories}}>      
+    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories, cart, dispatch}}>      
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home/>}/>
