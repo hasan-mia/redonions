@@ -10,7 +10,7 @@ const Blogs = () => {
 			<div className="container px-8">
 				<div className="grid lg:grid-cols-3  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">
 					{
-						blogs.map(blog=><Blog key={blog.id} blog={blog}></Blog>)
+						blogs.map(blog=><Blog key={blog._id} blog={blog}></Blog>)
 					}
 					
 				</div>

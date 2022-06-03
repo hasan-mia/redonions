@@ -107,8 +107,6 @@ const Header = ({ fixed }) => {
                                 <button className = "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 rounded-2xl hover:bg-red-600 hover:text-white"
                                 onClick={() => signOut(auth)}>Sign out</button>
                             }
-                            
-                        
                         </ul>
                     </div>
                     </div>

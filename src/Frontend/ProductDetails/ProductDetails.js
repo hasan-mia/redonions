@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { productContext } from '../../App';
-import useCarts from '../../Hooks/useCarts';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
@@ -18,23 +18,39 @@ const ProductDetails = () => {
 		return { __html: htmlContent }
 	}
 	
-	// ====Product Increment & Decrement=====
-	
-	// const reducer = (cart, action) => {
-	// 	if (action.type === 'increment') {
-	// 		cart = cart + 1;
-	// 	}
-	// 	if (cart > 1 && action.type === 'decrement') {
-	// 		cart = cart - 1;
-	// 	}
-	// 	return cart;
-	// }
-	// const initState = 1;
-	// const{cart, dispatch}=useCarts(reducer, initState);
-	
 	if (cart > 0) {
 		total = price * cart;
 	}
+	// ========Handle Product Order=======
+	const handleOrder = (e) => {
+		e.preventDefault();
+		if (cart < 1) {
+			toast.error("Please order at least 1 Item");
+			return;
+		}
+		const order = {
+			title : title,
+			ordernumber : cart,
+			price: price,
+			total: total,
+			img : img,
+		}
+		const url = `http://localhost:5000/order`;
+		fetch(url, {
+		method: 'POST',
+		body: JSON.stringify(order),
+		headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+		},
+		})
+		.then((response) => response.json())
+		.then(data => {
+			console.log(data);
+			toast.success("Add to cart successfully")
+			e.target.reset()
+		});
+
+	};
 	return (
 		<section className='flex justify-center'>
 			<div className="container px-16">
@@ -53,7 +69,7 @@ const ProductDetails = () => {
 								<button onClick={()=>dispatch({type:'increment'})} className=' text-red-500 p-1'>+</button>
 							</div>
 						</div>
-						<button className='flex items-center'> <i className="far fa-cart-plus text-2xl"></i> <span className='px-2 items-baseline'>Add</span></button>
+						<button onClick={handleOrder} className='flex items-center'> <i className="far fa-cart-plus text-2xl"></i> <span className='px-2 items-baseline'>Add</span></button>
 					</div>
 					<div className="content-img">
 						<img src={img} alt=""/>

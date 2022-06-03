@@ -31,6 +31,7 @@ import Products from './Frontend/Products/Products';
 import ProductDetails from './Frontend/ProductDetails/ProductDetails';
 import useCategories from './Hooks/useCategories';
 import useCarts from './Hooks/useCarts';
+import Cart from './Frontend/Cart/Cart';
 
 export const productContext = createContext()
 
@@ -40,17 +41,17 @@ function App() {
   const {blogs} = useBlogs();
   const {categories}=useCategories()
 
-  // ====Product Increment & Decrement=====
+  // ====Product Cart Increment & Decrement=====
 	const reducer = (cart, action) => {
 		if (action.type === 'increment') {
 			cart = cart + 1;
 		}
-		if (cart > 1 && action.type === 'decrement') {
+		if (cart > 0 && action.type === 'decrement') {
 			cart = cart - 1;
 		}
 		return cart;
 	}
-	const initState = 1;
+	const initState = 0;
 	const{cart, dispatch}=useCarts(reducer, initState);
  
   return (
@@ -58,9 +59,10 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/blog/:id' element={<BlogDetails/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
+        <Route path='/cart/' element={<Cart/>}/>
+        <Route path='/blog/:id' element={<BlogDetails/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/privacy' element={<Privacy/>}/>

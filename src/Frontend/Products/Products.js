@@ -46,7 +46,7 @@ const Products = () => {
 								<div className="container px-8">
 									<div className="grid lg:grid-cols-4  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">					
 										{
-											products.reverse().slice(0, 12).map(product => <Product key={product.id} product={product}></Product>)
+											products.reverse().slice(0, 12).map(product => <Product key={product._id} product={product}></Product>)
 										}					
 									</div>						
 								</div>
@@ -57,7 +57,7 @@ const Products = () => {
 								<div className="container px-8">
 									<div className="grid lg:grid-cols-4  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">					
 										{
-											catProducts.map(product => <Product key={product.id} product={product}></Product>)
+											catProducts.map(product => <Product key={product._id} product={product}></Product>)
 										}					
 									</div>						
 								</div>
@@ -68,7 +68,7 @@ const Products = () => {
 								<div className="container px-8">
 									<div className="grid lg:grid-cols-4  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">					
 										{
-											catProducts.map(product => <Product key={product.id} product={product}></Product>)
+											catProducts.map(product => <Product key={product._id} product={product}></Product>)
 										}					
 									</div>						
 								</div>
@@ -79,7 +79,7 @@ const Products = () => {
 								<div className="container px-8">
 									<div className="grid lg:grid-cols-4  md:gird-cols-2 grid-cols-1 gap-5 justify-items-center">					
 										{
-											catProducts.map(product => <Product key={product.id} product={product}></Product>)
+											catProducts.map(product => <Product key={product._id} product={product}></Product>)
 										}					
 									</div>						
 								</div>
