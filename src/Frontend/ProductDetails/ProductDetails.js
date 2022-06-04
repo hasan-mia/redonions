@@ -2,17 +2,26 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { productContext } from '../../App';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase/Firebase.init';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
+	const[user]= useAuthState(auth)
 	// Get Id From Navigate
 	const {id} = useParams();
 	// Get All Data
-	const {products, cart, dispatch} = useContext(productContext);
+	const {products, cart, dispatch, myorders} = useContext(productContext);
 	// Get Specific Item With ID
  	const product = products.find(item => item._id === id);
-	const {title, description,price,img} = product;
+	const {_id, title, description, price, img} = product;
 	let total = price;
+
+	//  const cartNumber = myorders.filter(orderItem=>orderItem._id !== _id)
+
+	// let newUpdateCart = [];
+	const existProduct = products.find(product => product._id == _id);
+		 console.log(existProduct);
 	// Create Markup HTML
 	const createMarkup = (htmlContent) => { 
 		return { __html: htmlContent }
@@ -30,10 +39,11 @@ const ProductDetails = () => {
 		}
 		const order = {
 			title : title,
-			ordernumber : cart,
+			cart : cart,
 			price: price,
 			total: total,
 			img : img,
+			email: user?.email
 		}
 		const url = `http://localhost:5000/order`;
 		fetch(url, {

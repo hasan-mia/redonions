@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'tw-elements';
+import { CartProvider } from 'react-use-cart';
 
 const root = ReactDomClient.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </BrowserRouter>
     </React.StrictMode>
 );

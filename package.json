@@ -25,6 +25,7 @@
     "react-rte": "^0.16.5",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.3",
+    "react-use-cart": "^1.13.0",
     "tailwind-editor": "^0.1.62",
     "tw-elements": "^1.0.0-alpha12",
     "web-vitals": "^2.1.4"

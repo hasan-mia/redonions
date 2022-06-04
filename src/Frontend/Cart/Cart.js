@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useMyOrder from '../../Hooks/useMyOrder';
+import { productContext } from '../../App';
 
 const Cart = () => {
 	const[user]=useAuthState(auth)
-	const [myorders, setOrders] = useState([]);
-
-  useEffect(() => {
-    const url = `http://localhost:5000/orders`;
-    fetch(url, {
-      headers: {
-        'authorization': `${user.email} ${localStorage.getItem("accessToken")}`,
-      },
-    })
-    .then(res => res.json())
-    .then(data => setOrders(data))
-  },[user.email])
+	const {cart, dispatch} = useContext(productContext);
+	const {myorders, setOrders} = useMyOrder()
+  
   
   	// Delete Product
 	const handleOrderDelete = id =>{
@@ -31,8 +24,8 @@ const Cart = () => {
             .then(res => res.json())
             .then(data =>{
                 if(data.deletedCount > 0){
-                    const remaining = myorders.filter(myorder => myorder._id !== id);
-                    setOrders(remaining);
+                    // const remaining = myorders.filter(myorder => myorder._id !== id);
+                    // setOrders(remaining);
                 }
 				toast.success("Delete successfully");
             })
@@ -79,9 +72,18 @@ const Cart = () => {
 										<td className="justify-center md:justify-end md:flex mt-6">
 											<div className="w-20 h-10">
 												<form className="relative flex flex-row w-full h-8">
-													<input type="number" defaultValue={myorder.ordernumber} className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" /> 
+													<input type="number" defaultValue={
+														myorder.cart
+													} className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" /> 
+													<button className='text-white bg-green-400 px-1'><i className="far fa-check-circle text-lg"></i></button>
 												</form>
 											</div>
+			
+											{/* <div className="flex ml-2 rounded-full border-2 gap-2">
+												<button onClick={()=>dispatch({type:'decrement'})} className=' text-gray-500 p-1'>-</button>
+													<input type="text" value={myorder.cart} className='text-gray-600 text-2xl w-4'/>
+												<button onClick={()=>dispatch({type:'increment'})} className=' text-red-500 p-1'>+</button>
+											</div> */}
 										</td>
 										<td className="hidden text-right md:table-cell"> 
 											<span className="text-sm lg:text-base font-medium">
@@ -115,6 +117,11 @@ const Cart = () => {
 								
 
 							</tbody>
+							{/* <tfoot>
+								<th className="text-left md:table-cell">Total</th>
+								<th className="text-right md:table-cell">Total</th>
+								<th className="text-right md:table-cell">Total</th>
+							</tfoot> */}
 						</table>
 						<hr className="pb-6 mt-6" />
 					</div>

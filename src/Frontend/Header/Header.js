@@ -1,21 +1,21 @@
 import logo from '../../Assets/logo.png';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
 import useAdmin from '../../Hooks/useAdmin';
 import useEditor from '../../Hooks/useEditor';
 import { productContext } from '../../App';
+import './Header.css';
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
     const {admin} = useAdmin(user);
     const {editor} = useEditor(user);
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const {cart} = useContext(productContext);
-    // console.log(cart);
+    const {cart, myorders} = useContext(productContext);
+    // console.log(myorders);
 	return (
 		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
             {
@@ -95,7 +95,14 @@ const Header = ({ fixed }) => {
                                 <Link className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                 to="/cart">
                                 <i className="far fa-cart-plus fa-2x text-2xl leading-lg opacity-75"></i>
-                                <span className="top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none transform -translate-y-1/2 border-2 rounded-full">{cart}</span>
+                                {/* {
+                                    myorders.map(item=>
+                                    <span className="top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none transform -translate-y-1/2 border-2 rounded-full">
+                                    {item?.ordernumber}</span>
+                                    )
+                                } */}
+                                <span className="top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none transform -translate-y-1/2 border-2 rounded-full">
+                                    {cart}</span>
                                 </Link>
                             </li>
 

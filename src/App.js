@@ -32,6 +32,7 @@ import ProductDetails from './Frontend/ProductDetails/ProductDetails';
 import useCategories from './Hooks/useCategories';
 import useCarts from './Hooks/useCarts';
 import Cart from './Frontend/Cart/Cart';
+import useMyOrder from './Hooks/useMyOrder';
 
 export const productContext = createContext()
 
@@ -39,7 +40,8 @@ export const productContext = createContext()
 function App() {
   const {products, setProducts, isLoad, setIsLoad} = useProducts();
   const {blogs} = useBlogs();
-  const {categories}=useCategories()
+  const {categories}=useCategories();
+  const{myorders}=useMyOrder();
 
   // ====Product Cart Increment & Decrement=====
 	const reducer = (cart, action) => {
@@ -55,13 +57,13 @@ function App() {
 	const{cart, dispatch}=useCarts(reducer, initState);
  
   return (
-    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories, cart, dispatch}}>      
+    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories, myorders, cart, dispatch}}>      
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
-        <Route path='/cart/' element={<Cart/>}/>
+        <Route path='/cart' element={<Cart/>}/>
         <Route path='/blog/:id' element={<BlogDetails/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/signin' element={<Signin/>}/>
