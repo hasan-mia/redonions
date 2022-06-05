@@ -8,14 +8,14 @@ import useAdmin from '../../Hooks/useAdmin';
 import useEditor from '../../Hooks/useEditor';
 import { productContext } from '../../App';
 import './Header.css';
+import { useCart } from 'react-use-cart';
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
     const {admin} = useAdmin(user);
     const {editor} = useEditor(user);
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const {cart, myorders} = useContext(productContext);
-    // console.log(myorders);
+    const {totalItems} = useCart();
 	return (
 		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
             {
@@ -102,7 +102,7 @@ const Header = ({ fixed }) => {
                                     )
                                 } */}
                                 <span className="top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none transform -translate-y-1/2 border-2 rounded-full">
-                                    {cart}</span>
+                                    {totalItems}</span>
                                 </Link>
                             </li>
 

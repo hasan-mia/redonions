@@ -5,33 +5,37 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useMyOrder from '../../Hooks/useMyOrder';
 import { productContext } from '../../App';
+import { useCart } from 'react-use-cart';
 
-const Cart = () => {
+const Carts = () => {
 	const[user]=useAuthState(auth)
 	const {cart, dispatch} = useContext(productContext);
 	const {myorders, setOrders} = useMyOrder()
-  
+  	const {isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem} = useCart();
+
   
   	// Delete Product
-	const handleOrderDelete = id =>{
-        const confirm = window.confirm('Are you sure you want to delete?');
+	// const handleOrderDelete = id =>{
+    //     const confirm = window.confirm('Are you sure you want to delete?');
 
-        if(confirm){
-            const url = `http://localhost:5000/order/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data =>{
-                if(data.deletedCount > 0){
-                    // const remaining = myorders.filter(myorder => myorder._id !== id);
-                    // setOrders(remaining);
-                }
-				toast.success("Delete successfully");
-            })
-        }
-    }
+    //     if(confirm){
+    //         const url = `http://localhost:5000/order/${id}`;
+    //         fetch(url, {
+    //             method: 'DELETE'
+    //         })
+    //         .then(res => res.json())
+    //         .then(data =>{
+    //             if(data.deletedCount > 0){
+    //                 // const remaining = myorders.filter(myorder => myorder._id !== id);
+    //                 // setOrders(remaining);
+    //             }
+	// 			toast.success("Delete successfully");
+    //         })
+    //     }
+    // }
 
+
+  if (isEmpty) return <p>Your cart is empty</p>;
 	return (
 		<section className='min-w-screen min-h-screen bg-gray-50 py-2'>
 			<div className="grid grid-cols-1 justify-items-center px-5">
@@ -96,7 +100,7 @@ const Cart = () => {
 											</span> 
 										</td>
 										<td className="text-right"> 
-											<button onClick={()=>handleOrderDelete(myorder._id)} className="text-sm lg:text-base font-medium bg-red-500 rounded-lg text-white p-1"><i className="fas fa-trash-alt text-lg"></i></button> 
+											<button onClick={()=>removeItem(myorder._id)} className="text-sm lg:text-base font-medium bg-red-500 rounded-lg text-white p-1"><i className="fas fa-trash-alt text-lg"></i></button> 
 										</td>
 										<td className="text-right"> 
 										{
@@ -131,4 +135,4 @@ const Cart = () => {
 	);
 };
 
-export default Cart;
+export default Carts;

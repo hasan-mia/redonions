@@ -11,11 +11,11 @@ const AllProduct = () => {
 	const updateProduct = useNavigate();
 	const {products, isLoad, setIsLoad} = useProducts();
 	// Delete Category
-	const handleProducttDelete = id => {
+	const handleProducttDelete = _id => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `http://localhost:5000/product/${_id}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {
@@ -61,7 +61,7 @@ const AllProduct = () => {
 					</thead>
 					<tbody>
 						{
-							products.map((product, index) =>
+							products.reverse([]).map((product, index) =>
 								<tr key={product._id} className="bg-white border-b">
 									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
 									<td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

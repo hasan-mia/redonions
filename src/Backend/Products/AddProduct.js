@@ -5,6 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import JoditEditor from 'jodit-react'
 import useCategories from '../../Hooks/useCategories';
+// import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 const config = {
   buttons: ['bold', 'italic', 'link', 'unlink', 'underline', 'source']
@@ -12,6 +14,7 @@ const config = {
 
 const AddProduct = () => {
   const [user] = useAuthState(auth);
+  const { v5: uuidv5 } = require('uuid');
   const{categories}=useCategories();
 
   // =========Text Editor=======
@@ -31,7 +34,7 @@ const AddProduct = () => {
 
   const onSubmit = async data => {
         const image = data.image[0];
-        console.log(image);
+        console.log(data);
         const formData = new FormData();
         formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?key=${imageBBKey}`;
@@ -44,6 +47,7 @@ const AddProduct = () => {
             if(result.success){
                 const img = result.data.url;
                 const product = {
+                    id: uuidv4(),
                     title: data.title,
                     shortdesc: shortdesc,
                     description: description,

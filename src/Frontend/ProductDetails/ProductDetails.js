@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { productContext } from '../../App';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
+import { useCart } from 'react-use-cart';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
@@ -16,12 +17,6 @@ const ProductDetails = () => {
  	const product = products.find(item => item._id === id);
 	const {_id, title, description, price, img} = product;
 	let total = price;
-
-	//  const cartNumber = myorders.filter(orderItem=>orderItem._id !== _id)
-
-	// let newUpdateCart = [];
-	const existProduct = products.find(product => product._id == _id);
-		 console.log(existProduct);
 	// Create Markup HTML
 	const createMarkup = (htmlContent) => { 
 		return { __html: htmlContent }
@@ -31,36 +26,39 @@ const ProductDetails = () => {
 		total = price * cart;
 	}
 	// ========Handle Product Order=======
-	const handleOrder = (e) => {
-		e.preventDefault();
-		if (cart < 1) {
-			toast.error("Please order at least 1 Item");
-			return;
-		}
-		const order = {
-			title : title,
-			cart : cart,
-			price: price,
-			total: total,
-			img : img,
-			email: user?.email
-		}
-		const url = `http://localhost:5000/order`;
-		fetch(url, {
-		method: 'POST',
-		body: JSON.stringify(order),
-		headers: {
-			'Content-type': 'application/json; charset=UTF-8',
-		},
-		})
-		.then((response) => response.json())
-		.then(data => {
-			console.log(data);
-			toast.success("Add to cart successfully")
-			e.target.reset()
-		});
+	// const handleOrder = (e) => {
+	// 	e.preventDefault();
+	// 	if (cart < 1) {
+	// 		toast.error("Please order at least 1 Item");
+	// 		return;
+	// 	}
+	// 	const order = {
+	// 		title : title,
+	// 		cart : cart,
+	// 		price: price,
+	// 		total: total,
+	// 		img : img,
+	// 		email: user?.email
+	// 	}
+	// 	const url = `http://localhost:5000/order`;
+	// 	fetch(url, {
+	// 	method: 'POST',
+	// 	body: JSON.stringify(order),
+	// 	headers: {
+	// 		'Content-type': 'application/json; charset=UTF-8',
+	// 	},
+	// 	})
+	// 	.then((response) => response.json())
+	// 	.then(data => {
+	// 		console.log(data);
+	// 		toast.success("Add to cart successfully")
+	// 		e.target.reset()
+	// 	});
 
-	};
+	// };
+	
+	const {addItem, isEmpty, totalItems, totalUniqueItems, items, updateItemQuantity, removeItem} = useCart();
+
 	return (
 		<section className='flex justify-center'>
 			<div className="container px-16">
@@ -75,11 +73,11 @@ const ProductDetails = () => {
 							<span className='font-semibold'>${total}</span>
 							<div className="flex ml-8 rounded-full border-2 gap-5">
 								<button onClick={()=>dispatch({type:'decrement'})} className=' text-gray-500 p-1'>-</button>
-									<input type="text" value={cart} className='text-gray-600 text-3xl w-8'/>
+									<input type="text" value={totalUniqueItems} className='text-gray-600 text-3xl w-8'/>
 								<button onClick={()=>dispatch({type:'increment'})} className=' text-red-500 p-1'>+</button>
 							</div>
 						</div>
-						<button onClick={handleOrder} className='flex items-center'> <i className="far fa-cart-plus text-2xl"></i> <span className='px-2 items-baseline'>Add</span></button>
+						<button onClick={() => addItem(product)} className='flex items-center'> <i className="far fa-cart-plus text-2xl"></i> <span className='px-2 items-baseline'>Add</span></button>
 					</div>
 					<div className="content-img">
 						<img src={img} alt=""/>

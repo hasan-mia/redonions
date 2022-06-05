@@ -4,17 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { CartProvider } from 'react-use-cart'
+
 import 'tw-elements';
-import { CartProvider } from 'react-use-cart';
 
 const root = ReactDomClient.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+      </CartProvider>
     </React.StrictMode>
 );
 
