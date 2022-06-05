@@ -11,9 +11,6 @@ const useReducers = () => {
 		}
 		return cart;
 	}
-	if (cart > 0) {
-		total = price * cart;
-	}
 	const initState = 0;
 	const{cart, dispatch}=useCarts(reducer, initState);
 

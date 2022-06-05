@@ -1,21 +1,20 @@
 import logo from '../../Assets/logo.png';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { signOut } from 'firebase/auth';
 import useAdmin from '../../Hooks/useAdmin';
-import useEditor from '../../Hooks/useEditor';
-import { productContext } from '../../App';
+// import useEditor from '../../Hooks/useEditor';
 import './Header.css';
 import { useCart } from 'react-use-cart';
 
 const Header = ({ fixed }) => {
     const [user]=useAuthState(auth)
     const {admin} = useAdmin(user);
-    const {editor} = useEditor(user);
+    // const {editor} = useEditor(user);
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const {totalItems} = useCart();
+    const {totalUniqueItems} = useCart();
 	return (
 		<header id="navbar" className="styles.navbar w-full md:mb-0 mb-8">
             {
@@ -102,7 +101,7 @@ const Header = ({ fixed }) => {
                                     )
                                 } */}
                                 <span className="top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none transform -translate-y-1/2 border-2 rounded-full">
-                                    {totalItems}</span>
+                                    {totalUniqueItems}</span>
                                 </Link>
                             </li>
 

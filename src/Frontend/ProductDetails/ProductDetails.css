@@ -17,16 +17,13 @@
 	padding-bottom: 5px;
 }
 
-.content > button {
+button.cart {
     display: flex;
     background: hsl(348deg 95% 54%);
-    width: 8rem;
     text-align: center;
     justify-content: center;
     color: #fff;
     border-radius: 30px;
-    padding: 5px 10px;
-    margin-top: 21px;
 }
 
 .input-number {
