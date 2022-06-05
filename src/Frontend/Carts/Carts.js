@@ -2,7 +2,6 @@ import React from 'react';
 // import { useAuthState } from 'react-firebase-hooks/auth';
 // import auth from '../../Firebase/Firebase.init';
 import { Link } from 'react-router-dom';
-
 import { useCart } from 'react-use-cart';
 
 const Carts = () => {
@@ -42,7 +41,7 @@ const Carts = () => {
 	  return <div className='text-center pt-52 h-screen'>
 	   	<h1 className='text-5xl uppercase mb-8 text-red-500 font-semibold'>Your cart is empty</h1>
 		<Link to='/' className='text-3xl font-semibold bg-green-400 rounded-lg py-1 px-2 text-white'>Go to Home</Link>
-	  </div>;
+	  </div>
 	}
 	return (
 		<section className='min-w-screen min-h-screen bg-gray-50 py-2'>
@@ -59,7 +58,7 @@ const Carts = () => {
 			<div className="flex justify-center mb-6">
 				<div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
 					<div className="flex-1">
-						<table className="w-full text-sm lg:text-base" cellspacing="0">
+						<table className="w-full text-sm lg:text-base" cellSpacing="0">
 							<thead>
 								<tr className="h-12 uppercase">
 									<th className="text-left md:table-cell">Image</th>

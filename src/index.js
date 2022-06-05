@@ -4,8 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { CartProvider } from 'react-use-cart'
-
+import { CartProvider } from 'react-use-cart';
 import 'tw-elements';
 
 const root = ReactDomClient.createRoot(document.getElementById('root'));
