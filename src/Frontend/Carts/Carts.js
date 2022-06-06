@@ -111,12 +111,12 @@ const Carts = () => {
 										</td>
 										<td className="text-right"> 
 										<button className="text-sm lg:text-base font-medium bg-indigo-600 text-white p-1 rounded-md">
-											<Link to={`/dashboard/checkout/${(item._id)}`}>Pay Now</Link>	
+											<Link to={`/checkout/${(item._id)}`}>Pay Now</Link>	
 											</button>
 										{
 											(item.total && !item.paid) &&
 											<button className="text-sm lg:text-base font-medium bg-indigo-600 text-white p-1 rounded-md">
-											<Link to={`/dashboard/checkout/${(item._id)}`}>Pay Now</Link>	
+											<Link to={`/checkout/${(item._id)}`}>Pay Now</Link>	
 											</button> 
 										}
 										{

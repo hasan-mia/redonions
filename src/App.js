@@ -33,6 +33,7 @@ import useCategories from './Hooks/useCategories';
 import useCarts from './Hooks/useCarts';
 import Carts from './Frontend/Carts/Carts';
 import useMyOrder from './Hooks/useMyOrder';
+import Checkout from './Frontend/Checkout/Checkout';
 
 export const productContext = createContext()
 
@@ -43,28 +44,17 @@ function App() {
   const {categories}=useCategories();
   const{myorders}=useMyOrder();
 
-  // ====Product Cart Increment & Decrement=====
-	const reducer = (cart, action) => {
-		if (action.type === 'increment') {
-			cart = cart + 1;
-		}
-		if (cart > 0 && action.type === 'decrement') {
-			cart = cart - 1;
-		}
-		return cart;
-	}
-	const initState = 0;
-	const{cart, dispatch}=useCarts(reducer, initState);
- 
+
   return (
     <>
-    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories, myorders, cart, dispatch}}>      
+    <productContext.Provider value={{products, setProducts, isLoad, setIsLoad, blogs, categories, myorders}}>      
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
         <Route path='/cart' element={<Carts/>}/>
+        <Route path='/checkout/:id' element={<Checkout/>}/>
         <Route path='/blog/:id' element={<BlogDetails/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/signin' element={<Signin/>}/>

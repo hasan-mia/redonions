@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { toast } from 'react-toastify'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../../Firebase/Firebase.init'
 
-const CheckoutForm = ({ order }) => {
+const CheckoutForm = ({ product }) => {
+  const[user]=useAuthState(auth);
   const stripe = useStripe()
   const elements = useElements()
   const [cardError, setCardError] = useState('')
@@ -11,7 +14,7 @@ const CheckoutForm = ({ order }) => {
   const [transactionId, setTransactionId] = useState('')
   const [clientSecret, setClientSecret] = useState('')
 
-  const { _id, name, title, ordernumber, price, total, email } = order
+  const { _id, name, title, price, itemTotal} = product
 
   useEffect(() => {
     fetch('http://localhost:5000/payment-intent', {
@@ -20,7 +23,7 @@ const CheckoutForm = ({ order }) => {
         'content-type': 'application/json',
         authorization: `token ${localStorage.getItem('accessToken')}`
       },
-      body: JSON.stringify({ total })
+      body: JSON.stringify({ itemTotal })
     })
       .then(res => res.json())
       .then(data => {
@@ -28,7 +31,7 @@ const CheckoutForm = ({ order }) => {
           setClientSecret(data.clientSecret)
         }
       })
-  }, [total])
+  }, [itemTotal])
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -60,7 +63,7 @@ const CheckoutForm = ({ order }) => {
         card: card,
         billing_details: {
           name: name,
-          email: email
+          email: user?.email
         }
       }
     })

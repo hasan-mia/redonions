@@ -2,31 +2,30 @@ import React from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import {useParams } from 'react-router-dom';
+import { useCart } from 'react-use-cart';
 import CheckoutForm from './CheckoutForm';
 import Loading from '../Loading/Loading';
-import { useQuery } from 'react-query';
 import './Checkout.css';
 
-const stripePromise = loadStripe(
-  'pk_test_51L3NBcEbb3guYHF5enttHC8JWsbeVqYnk0NBkLXFbNo6SmkQjoSydWQMXPyW08Yz7PkMJnWvI7gmMXPvFMNKtbfz00NABkP8ru'
-)
+const stripePromise = loadStripe('pk_test_51L3NBcEbb3guYHF5enttHC8JWsbeVqYnk0NBkLXFbNo6SmkQjoSydWQMXPyW08Yz7PkMJnWvI7gmMXPvFMNKtbfz00NABkP8ru')
 
 const Checkout = () => {
 	const {id}=useParams();
-    const url = `https://localhost:5000/order/${id}`;
-    const { data: order, isLoading } = useQuery(['order', id], () => fetch(url, {
-        method: 'GET',
-        headers: {
-            'authorization': `token ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => res.json()));
-    if (isLoading) {
+    // Get All Data
+    const {isEmpty, items} = useCart();
+    console.log(typeof id);
+	// const {products} = useContext(productContext);
+	// Get Specific Item With ID
+ 	const product = items.find(item => item._id === id);
+	// const {title, price, img, itemTotal, quantity} = product;
+    console.log(product);
+
+    if (isEmpty) {
         return <Loading></Loading>
     }
-
 	return (
 		<section>
-			<div className="px-3 md:w-5/12">
+			<div className="grid md:flex lg:px-3">
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-3 items-center">
                         <div className="w-32"><span className="text-gray-600 font-semibold">Contact</span></div>
@@ -39,10 +38,12 @@ const Checkout = () => {
                 </div>
 
                 {/* Card Option */}
-                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light p-4">
+                <div className='w-full lg:px-3'>
+                    <div className="mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light p-4">
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm order={order} />
+                        <CheckoutForm product={product} />
                     </Elements>
+                </div>
                 </div>
             </div>
 		</section>
