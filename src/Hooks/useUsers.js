@@ -7,7 +7,7 @@ const useUsers = () => {
     const [users, setUsers] = useState([])
     const [isLoad, setIsLoad] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://redonions.herokuapp.com/users`, {
             method:'GET',
             headers: {
                 'content-type': 'application/json',

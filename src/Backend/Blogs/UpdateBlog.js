@@ -59,7 +59,7 @@ const UpdateBlog = () => {
                 }
   
                 // Send to your database 
-                fetch(`http://localhost:5000/blog/${id}`, {
+                fetch(`https://redonions.herokuapp.com/blog/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json',

@@ -8,7 +8,7 @@ const useToken = user =>{
         const name = user?.user?.displayName;
         const currentUser = {email: email, name: name};
         if(email){
-            fetch(`http://localhost:5000/signin/${email}`, {
+            fetch(`https://redonions.herokuapp.com/signin/${email}`, {
                 method:'PUT',
                 headers: {
                     'content-type': 'application/json'

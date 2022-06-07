@@ -4,7 +4,7 @@ const useBlogs = () => {
 	const [blogs, setBlogs] = useState([])
 	const [isLoad, setIsLoad] = useState(true)
 	useEffect(() => {
-		fetch('http://localhost:5000/blogs')
+		fetch('https://redonions.herokuapp.com/blogs')
 			.then(res => res.json())
 			.then(data => setBlogs(data, setIsLoad(false)))
 	}, [isLoad]);

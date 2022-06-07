@@ -6,7 +6,7 @@ const useEditor = (user) => {
     useEffect(() => {
         const email = user?.email;
         if(email){
-            fetch(`http://localhost:5000/editor/${email}`, {
+            fetch(`https://redonions.herokuapp.com/editor/${email}`, {
                 method:'GET',
                 headers: {
                     'content-type': 'application/json',

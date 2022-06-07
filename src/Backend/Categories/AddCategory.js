@@ -30,7 +30,7 @@ const AddCategory = () => {
                 }
   
                 // Send to your database 
-                fetch('http://localhost:5000/category', {
+                fetch('https://redonions.herokuapp.com/category', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

@@ -9,7 +9,7 @@ const User = ({item, index, setIsLoad}) => {
 	
     //======= Make Admin =========
 	const makeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://redonions.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `${email} ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const User = ({item, index, setIsLoad}) => {
 
     //======= Make Editor =========
 	const makeEditor = () => {
-        fetch(`http://localhost:5000/user/editor/${email}`, {
+        fetch(`https://redonions.herokuapp.com/user/editor/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `${email} ${localStorage.getItem('accessToken')}`
@@ -54,7 +54,7 @@ const User = ({item, index, setIsLoad}) => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `http://localhost:5000/delete-user/${email}`;
+            const url = `https://redonions.herokuapp.com/delete-user/${email}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {
