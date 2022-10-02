@@ -1,3 +1,12 @@
+# RedOnion is a simple ecommerce food delivery project
+1. User and Admin role
+2. Only admin can acccess the admin role
+3. user can bu and add to cart etc
+
+## Admin Login Credentials
+#### Email: admin@hasan.com 
+#### Pass: admin123
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
