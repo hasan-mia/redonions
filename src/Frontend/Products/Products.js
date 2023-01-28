@@ -27,11 +27,11 @@ const Products = () => {
 		<section className='category mx-auto text-center'>
 			<div className="container px-6">
 					 <Tab.Group>
-						<Tab.List className='flex justify-center py-8'>
-							<Tab onClick={()=>setCatProducts(products)} className="px-2 py-2 flex items-center active:border-b-1 active:border-red-600 active:text-red-600 text-xl capitalize font-semibold">All</Tab>
+						<Tab.List className='flex justify-center pt-8 pb-2 w-100 mb-4 overflow-x-scroll md:overflow-hidden'>
+							<Tab onClick={()=>setCatProducts(products)} className="px-2 py-2 flex items-center active:border-b-1 active:border-red-600 active:text-red-600 text-sm md:text-xl capitalize font-semibold">All</Tab>
 							{
 								categoyList.map(categoryName=>
-									<Tab onClick={()=>filterCategory(categoryName)} className="px-2 py-2 flex items-center active:border-b-1 active:border-red-600 active:text-red-600 text-xl capitalize font-semibold">	
+									<Tab onClick={()=>filterCategory(categoryName)} className="px-2 py-2 flex items-center active:border-b-1 active:border-red-600 active:text-red-600 text-sm md:text-xl capitalize font-semibold">	
 									{categoryName}
 									</Tab>
 								)

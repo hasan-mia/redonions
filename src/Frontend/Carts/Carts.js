@@ -38,7 +38,7 @@ const Carts = () => {
 	
 
   if (isEmpty){ 
-	  return <div className='text-center pt-52 h-screen'>
+	  return <div className='text-center pt-52 min-h-screen'>
 	   	<h1 className='text-5xl uppercase mb-8 text-red-500 font-semibold'>Your cart is empty</h1>
 		<Link to='/' className='text-3xl font-semibold bg-green-400 rounded-lg py-1 px-2 text-white'>Go to Home</Link>
 	  </div>

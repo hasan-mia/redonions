@@ -24,8 +24,8 @@ const Checkout = () => {
         return <Loading></Loading>
     }
 	return (
-		<section>
-			<div className="grid md:flex lg:px-3">
+		<section className='min-h-screen'>
+			<div className="grid md:flex md:align-middle my-2 md:my-20 lg:px-3">
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-3 items-center">
                         <div className="w-32"><span className="text-gray-600 font-semibold">Contact</span></div>
