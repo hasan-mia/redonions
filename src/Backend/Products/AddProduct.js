@@ -58,7 +58,7 @@ const AddProduct = () => {
                 }
   
                 // Send to your database 
-                fetch('https://redonions.herokuapp.com/product', {
+                fetch('https://redonion.onrender.com/product', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

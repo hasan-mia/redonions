@@ -7,7 +7,7 @@ const useUsers = () => {
     const [users, setUsers] = useState([])
     const [isLoad, setIsLoad] = useState(true)
     useEffect(() => {
-        fetch(`https://redonions.herokuapp.com/users`, {
+        fetch(`https://redonion.onrender.com/users`, {
             method:'GET',
             headers: {
                 'content-type': 'application/json',

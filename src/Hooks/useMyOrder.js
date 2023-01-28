@@ -7,7 +7,7 @@ const useMyOrder = () => {
 	const [myorders, setOrders] = useState([]);
 	const [isLoad, setIsLoad] = useState(true)
 		useEffect(() => {
-			const url = `https://redonions.herokuapp.com/myorders`;
+			const url = `https://redonion.onrender.com/myorders`;
 			fetch(url, {
 			headers: {
 				'authorization': `${user?.email} ${localStorage.getItem("accessToken")}`,

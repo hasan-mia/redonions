@@ -37,7 +37,7 @@ const UpdateCategory = () => {
                 }
   
                 // Send to your database 
-                fetch(`https://redonions.herokuapp.com/category/${id}`, {
+                fetch(`https://redonion.onrender.com/category/${id}`, {
                     method: 'PUT',
                     headers: {
                     	'content-type': 'application/json',

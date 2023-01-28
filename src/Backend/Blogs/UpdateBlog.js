@@ -59,7 +59,7 @@ const UpdateBlog = () => {
                 }
   
                 // Send to your database 
-                fetch(`https://redonions.herokuapp.com/blog/${id}`, {
+                fetch(`https://redonion.onrender.com/blog/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json',

@@ -15,7 +15,7 @@ const AllProduct = () => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `https://redonions.herokuapp.com/product/${_id}`;
+            const url = `https://redonion.onrender.com/product/${_id}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {

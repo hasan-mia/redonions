@@ -63,7 +63,7 @@ const UpdateProduct = () => {
                 }
   
                 // Send to your database 
-                fetch(`https://redonions.herokuapp.com/product/${id}`, {
+                fetch(`https://redonion.onrender.com/product/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json',

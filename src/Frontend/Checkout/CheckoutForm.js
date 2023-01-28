@@ -17,7 +17,7 @@ const CheckoutForm = ({ product }) => {
   const { _id, name, title, price, itemTotal} = product
 
   useEffect(() => {
-    fetch('https://redonions.herokuapp.com/payment-intent', {
+    fetch('https://redonion.onrender.com/payment-intent', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -83,7 +83,7 @@ const CheckoutForm = ({ product }) => {
         order: _id,
         transactionId: paymentIntent.id
       }
-      fetch(`https://redonions.herokuapp.com/order/${_id}`, {
+      fetch(`https://redonion.onrender.com/order/${_id}`, {
         method: 'PATCH',
         headers: {
           'content-type': 'application/json',

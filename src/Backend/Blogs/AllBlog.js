@@ -16,7 +16,7 @@ const AllBlog = () => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `https://redonions.herokuapp.com/blog/${id}`;
+            const url = `https://redonion.onrender.com/blog/${id}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {

@@ -15,7 +15,7 @@ const AllCategory = () => {
         const confirm = window.confirm('Are you sure you want to delete?');
 
         if(confirm){
-            const url = `https://redonions.herokuapp.com/category/${id}`;
+            const url = `https://redonion.onrender.com/category/${id}`;
             fetch(url, {
                 method: 'DELETE',
 				headers: {
