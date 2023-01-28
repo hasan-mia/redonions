@@ -8,13 +8,6 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    // apiKey: "AIzaSyB1Ryf7WT0vQdkbd-_1C7prprfylyQQuiY",
-    // authDomain: "redonion-tailwind.firebaseapp.com",
-    // projectId: "redonion-tailwind",
-    // storageBucket: "redonion-tailwind.appspot.com",
-    // messagingSenderId: "728420414255",
-    // appId: "1:728420414255:web:e83a1a722fd96cf92627da",
-    // measurementId: "G-WZRE9W158C"
     apiKey:process.env.REACT_APP_apiKey,
     authDomain:process.env.REACT_APP_authDomain,
     projectId:process.env.REACT_APP_projectId,

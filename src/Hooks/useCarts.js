@@ -5,7 +5,7 @@ const useCarts = (reducer, initState) => {
 	const dispatch = useCallback((action) => {
     const nextState = reducer(cart, action)
     setState(nextState)
-  }, [setState, cart])
+  }, [setState, cart, reducer])
 
   return {cart, dispatch};
 };
